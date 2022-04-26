@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { setLocalStorage } from '../helpers';
 
-export default function Login() {
+export default function Login({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState(false);
@@ -10,13 +11,14 @@ export default function Login() {
     setLocalStorage('user', { email });
     setLocalStorage('mealsToken', 1);
     setLocalStorage('cocktailsToken', 1);
+    history.push('/foods');
   };
 
   useEffect(() => {
     const regEx = /^[\w.-]+@[\w.-]+\.[\w]+(\.[\w]+)?$/i;
     const checkEmail = regEx.test(email);
     const numberMin = 6;
-    const checkPassword = password.length >= numberMin;
+    const checkPassword = password.length > numberMin;
     setValid(checkEmail === true && checkPassword === true);
   }, [email, password]);
 
@@ -53,3 +55,9 @@ export default function Login() {
     </form>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
