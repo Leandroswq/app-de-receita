@@ -9,7 +9,7 @@ function Header() {
       >
         Profile
       </button>
-      <h3 data-testid="page-title" >Page Title</h3>
+      <h3 data-testid="page-title">Page Title</h3>
       <button
         type="button"
         data-testid="search-top-btn"

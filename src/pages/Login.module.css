@@ -15,7 +15,7 @@
   flex-direction: column;
 }
 
-.container input, button {
+.container input, .button {
   font-size: 1.2rem;
   background: transparent;
   border-radius: 15px;
@@ -29,7 +29,18 @@
   opacity: 1;
 }
 
-.container button {
+.container .button {
   background-color: rgb(13, 13, 13);
   color: rgb(235, 235, 235);
+  cursor: pointer;
+}
+
+.container .button:disabled {
+  background-color: rgb(54, 54, 54);
+  opacity: 0.8;
+}
+
+.container .button:disabled:hover {
+  background-color: rgb(54, 54, 54);
+  opacity: 1;
 }

@@ -31,6 +31,7 @@ export default function Login({ history }) {
             data-testid="email-input"
             type="email"
             autoComplete="false"
+            className={ Style.button }
             id="email"
             onChange={ ({ target }) => setEmail(target.value) }
             placeholder="Email"
@@ -41,6 +42,7 @@ export default function Login({ history }) {
             data-testid="password-input"
             type="password"
             autoComplete="false"
+            className={ Style.button }
             id="senha"
             onChange={ ({ target }) => setPassword(target.value) }
             placeholder="Password"
