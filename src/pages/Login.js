@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { setLocalStorage } from '../helpers';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState(false);
+
+  const handleClick = () => {
+    setLocalStorage('user', { email });
+    setLocalStorage('mealsToken', 1);
+    setLocalStorage('cocktailsToken', 1);
+  };
 
   useEffect(() => {
     const regEx = /^[\w.-]+@[\w.-]+\.[\w]+(\.[\w]+)?$/i;
@@ -39,6 +46,7 @@ export default function Login() {
         data-testid="login-submit-btn"
         type="button"
         disabled={ !valid }
+        onClick={ handleClick }
       >
         Enter
       </button>
