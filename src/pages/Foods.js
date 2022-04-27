@@ -3,16 +3,20 @@ import { useSelector } from 'react-redux';
 import Card from '../components/Card';
 import Header from '../components/Header';
 
+const maxNumber = 12;
 function Foods() {
   const meals = useSelector(({ recipesReducer }) => recipesReducer.meals);
+  let newFoods = [];
 
-  console.log(meals);
+  if (meals) {
+    newFoods = meals.slice(0, maxNumber);
+  }
   return (
     <div>
       <Header hasSearch title="Foods" />
       <div>
         {
-          meals.map(({ idMeal, strMealThumb, strMeal }, index) => (
+          meals && newFoods.map(({ idMeal, strMealThumb, strMeal }, index) => (
             <Card
               title={ strMeal }
               image={ strMealThumb }
