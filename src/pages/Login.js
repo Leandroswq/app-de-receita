@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Style from './css/Login.module.css';
 import { setLocalStorage } from '../helpers';
+import { setEmailAction } from '../redux/actions/userAction';
 
 export default function Login({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setLocalStorage('user', { email });
     setLocalStorage('mealsToken', 1);
     setLocalStorage('cocktailsToken', 1);
+    dispatch(setEmailAction(email));
     history.push('/foods');
   };
 
