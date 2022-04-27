@@ -1,0 +1,46 @@
+.container {
+  align-items: center;
+  background-color: rgb(241, 229, 59);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  width: 100%;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+}
+
+.container .input, .button {
+  background: transparent;
+  border: 1px solid rgb(13, 13, 13);
+  border-radius: 15px;
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+::placeholder {
+  color: rgb(89, 72, 20);
+  opacity: 1;
+}
+
+.container .button {
+  background-color: rgb(13, 13, 13);
+  color: rgb(235, 235, 235);
+  cursor: pointer;
+}
+
+.container .button:disabled {
+  background-color: rgb(54, 54, 54);
+  opacity: 0.8;
+}
+
+.container .button:disabled:hover {
+  background-color: rgb(54, 54, 54);
+  opacity: 1;
+}
