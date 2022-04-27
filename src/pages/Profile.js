@@ -5,12 +5,13 @@ import { getLocalStorage } from '../helpers';
 
 function Profile() {
   const user = getLocalStorage('user');
+  const email = user ? user.email : '';
   const { push } = useHistory();
 
   return (
     <div>
       <Header title="Profile" />
-      <p data-testid="profile-email">{user.email}</p>
+      <p data-testid="profile-email">{email}</p>
       <button
         data-testid="profile-done-btn"
         type="button"
