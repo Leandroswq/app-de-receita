@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Style from './Login.module.css';
+import Style from './css/Login.module.css';
 import { setLocalStorage } from '../helpers';
 
 export default function Login({ history }) {
