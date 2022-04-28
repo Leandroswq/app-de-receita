@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../components/Card';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const maxNumber = 12;
 function Foods() {
@@ -14,6 +15,7 @@ function Foods() {
   return (
     <div>
       <Header hasSearch title="Foods" />
+
       <div>
         {
           meals && newFoods.map(({ idMeal, strMealThumb, strMeal }, index) => (
@@ -26,6 +28,8 @@ function Foods() {
           ))
         }
       </div>
+
+      <Footer />
     </div>
   );
 }

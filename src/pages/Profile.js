@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { getLocalStorage } from '../helpers';
 import Style from './css/Profile.module.css';
+
 
 function Profile() {
   const user = getLocalStorage('user');
@@ -12,6 +14,7 @@ function Profile() {
   return (
     <div className={ Style.container }>
       <Header title="Profile" />
+
       <p data-testid="profile-email" className={ Style.email }>{email}</p>
       <button
         data-testid="profile-done-btn"
@@ -43,6 +46,7 @@ function Profile() {
         Logout
 
       </button>
+      <Footer />
     </div>
   );
 }
