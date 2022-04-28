@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import { getLocalStorage } from '../helpers';
 import Style from './css/Profile.module.css';
 
-
 function Profile() {
   const user = getLocalStorage('user');
   const email = user ? user.email : '';
