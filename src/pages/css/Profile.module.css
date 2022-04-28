@@ -1,0 +1,30 @@
+.container {
+  align-items: center;
+  background-color: rgb(241, 229, 59);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  width: 100%;
+}
+
+.button {
+  background-color: rgb(13, 13, 13);
+  border: 1px solid rgb(13, 13, 13);
+  border-radius: 15px;
+  color: rgb(235, 235, 235);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+
+}
+
+.button, .email {
+  margin-top: 15px;
+
+}
+
+.email {
+  font-size: 1.6rem;
+}

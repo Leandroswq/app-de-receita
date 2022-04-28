@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Style from './css/Header.module.css';
-import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
+import searchIcon from '../images/searchIcon.svg';
+import Style from './css/Header.module.css';
+import SearchBar from './SearchBar';
 
 function Header({ hasSearch, title }) {
   const history = useHistory();
   const [showInput, setShowInput] = useState(false);
-  const [search, setSearch] = useState('');
+
   return (
     <div className={ Style.header }>
       <button
@@ -29,11 +30,7 @@ function Header({ hasSearch, title }) {
         </button>
       )}
       {showInput && (
-        <input
-          data-testid="search-input"
-          value={ search }
-          onChange={ () => setSearch(value) }
-        />
+        <SearchBar />
       )}
     </div>
   );

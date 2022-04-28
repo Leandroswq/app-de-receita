@@ -1,5 +1,5 @@
-import { USER_LOGIN } from './actionsTypes';
+import { SEARCH_RECIPES } from './actionsTypes';
 
-export const api = (value) => ({ type: USER_LOGIN, value });
+export const searchRecipesAc = (value) => ({ type: SEARCH_RECIPES, value });
 
 export const asd = (value) => ({ type: USER_LOGIN, value });
