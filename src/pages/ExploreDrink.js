@@ -1,9 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import getCocktail from '../API/drinkAPI';
 
 function ExploreDrink() {
+  const history = useHistory();
+
+  async function getAPI() {
+    const { drinks } = await getCocktail();
+    const { idDrink } = drinks[0];
+    history.push(`/drinks/${idDrink}`);
+  }
   return (
     <div>
       <Header title="Explore Drinks" />
@@ -18,6 +26,7 @@ function ExploreDrink() {
       <button
         type="button"
         data-testid="explore-surprise"
+        onClick={ getAPI }
       >
         Surprise me!
       </button>

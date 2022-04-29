@@ -1,9 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import getMeal from '../API/foodAPI';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function ExploreFood() {
+  const history = useHistory();
+
+  async function getAPI() {
+    const { meals } = await getMeal();
+    const { idMeal } = meals[0];
+    history.push(`/foods/${idMeal}`);
+  }
+
   return (
     <div>
       <Header title="Explore Foods" />
@@ -25,6 +34,7 @@ function ExploreFood() {
       <button
         type="button"
         data-testid="explore-surprise"
+        onClick={ getAPI }
       >
         Surprise me!
       </button>
