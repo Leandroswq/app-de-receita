@@ -15,6 +15,7 @@ function Foods() {
   return (
     <div>
       <Header hasSearch title="Foods" />
+
       <div>
         {
           meals && newFoods.map(({ idMeal, strMealThumb, strMeal }, index) => (
