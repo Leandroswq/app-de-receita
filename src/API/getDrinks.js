@@ -11,6 +11,9 @@ const getDrinks = async (searchItem, filter) => {
   case 'firstLetter':
     URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchItem}`;
     break;
+  case 'ingredientList':
+    URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+    break;
   default:
     URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     break;
