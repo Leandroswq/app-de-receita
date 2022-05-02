@@ -11,6 +11,8 @@ function Drinks() {
   if (drinks) {
     newDrinks = drinks.slice(0, maxNumber);
   }
+  console.log(newDrinks);
+  
   return (
     <div>
       <Header hasSearch title="Drinks" />
