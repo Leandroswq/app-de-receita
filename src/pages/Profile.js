@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import { getLocalStorage } from '../helpers';
 import Style from './css/Profile.module.css';
 
-
 function Profile() {
   const user = getLocalStorage('user');
   const email = user ? user.email : '';
@@ -14,7 +13,7 @@ function Profile() {
   return (
     <div className={ Style.container }>
       <Header title="Profile" />
-
+      <p>Profile</p>
       <p data-testid="profile-email" className={ Style.email }>{email}</p>
       <button
         data-testid="profile-done-btn"

@@ -7,6 +7,7 @@ function Explore() {
   return (
     <div>
       <Header title="Explore" />
+      <p>Explore</p>
       <Link
         to="/explore/foods"
         type="button"

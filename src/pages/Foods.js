@@ -28,7 +28,6 @@ function Foods() {
           ))
         }
       </div>
-
       <Footer />
     </div>
   );
