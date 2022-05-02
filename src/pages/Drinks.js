@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../components/Card';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const maxNumber = 12;
 function Drinks() {
@@ -12,7 +11,6 @@ function Drinks() {
   if (drinks) {
     newDrinks = drinks.slice(0, maxNumber);
   }
-  console.log(newDrinks);
   return (
     <div>
       <Header hasSearch title="Drinks" />
@@ -28,7 +26,6 @@ function Drinks() {
           ))
         }
       </div>
-      <Footer />
     </div>
   );
 }
