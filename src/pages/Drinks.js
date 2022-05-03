@@ -10,6 +10,7 @@ import getDrinks from '../API/getDrinks';
 import { searchRecipesAc } from '../redux/actions/searchActions';
 import { drinksCategoriesAction } from '../redux/actions/categoriesActions';
 
+
 const magicNumber5 = 5;
 const maxNumber = 12;
 const categorieToggle = {
