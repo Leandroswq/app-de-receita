@@ -1,21 +1,22 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import NotFound from './components/NotFound';
+import DoneRecipes from './pages/DoneRecipes';
+import DrinkRecipe from './pages/DrinkRecipe';
+import DrinkRecipeProgress from './pages/DrinkRecipeProgress';
+import Drinks from './pages/Drinks';
+import Explore from './pages/Explore';
+import ExploreDrink from './pages/ExploreDrink';
+import ExploreDrinkIngredients from './pages/ExploreDrinkIngredients';
+import ExploreFood from './pages/ExploreFood';
+import ExploreFoodIngredients from './pages/ExploreFoodIngredients';
+import ExploreFoodNationalities from './pages/ExploreFoodNationalities';
+import FavoriteRecipes from './pages/FavoriteRecipes';
+import FoodRecipe from './pages/FoodRecipe';
+import FoodRecipeProgress from './pages/FoodRecipeProgress';
 import Foods from './pages/Foods';
 import Login from './pages/Login';
-import Drinks from './pages/Drinks';
-import FoodRecipe from './pages/FoodRecipe';
-import DrinkRecipe from './pages/DrinkRecipe';
-import FoodRecipeProgress from './pages/FoodRecipeProgress';
-import DrinkRecipeProgress from './pages/DrinkRecipeProgress';
-import Explore from './pages/Explore';
-import ExploreFood from './pages/ExploreFood';
-import ExploreDrink from './pages/ExploreDrink';
-import ExploreFoodIngredients from './pages/ExploreFoodIngredients';
-import ExploreDrinkIngredients from './pages/ExploreDrinkIngredients';
-import ExploreFoodNationalities from './pages/ExploreFoodNationalities';
 import Profile from './pages/Profile';
-import DoneRecipes from './pages/DoneRecipes';
-import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function Routes() {
   return (
@@ -44,6 +45,11 @@ function Routes() {
         exact
         path="/explore/foods/nationalities"
         component={ ExploreFoodNationalities }
+      />
+      <Route
+        exact
+        path="/explore/drinks/nationalities"
+        component={ NotFound }
       />
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />

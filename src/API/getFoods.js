@@ -20,6 +20,9 @@ const getFoods = async (searchItem, filter) => {
   case 'categoriesList':
     URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
     break;
+  case 'area':
+    URL = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${searchItem}`;
+    break;
   default:
     URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
     break;
