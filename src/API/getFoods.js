@@ -14,6 +14,9 @@ const getFoods = async (searchItem, filter) => {
   case 'ingredientList':
     URL = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
     break;
+  case 'id':
+    URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${searchItem}`;
+    break;
   case 'categorie':
     URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchItem}`;
     break;
@@ -27,5 +30,4 @@ const getFoods = async (searchItem, filter) => {
   const data = await fetch(URL).then((response) => response.json());
   return (data);
 };
-
 export default getFoods;
