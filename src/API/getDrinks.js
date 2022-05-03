@@ -14,11 +14,16 @@ const getDrinks = async (searchItem, filter) => {
   case 'ingredientList':
     URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
     break;
+  case 'categorie':
+    URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${searchItem}`;
+    break;
+  case 'categoriesList':
+    URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+    break;
   default:
     URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     break;
   }
-
   const data = await fetch(URL).then((response) => response.json());
   return (data);
 };
