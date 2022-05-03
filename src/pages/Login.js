@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 import Style from './css/Login.module.css';
 import { setLocalStorage } from '../helpers';
 
-export default function Login({ history }) {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState(false);
-
+  const history = useHistory();
   const handleClick = () => {
     setLocalStorage('user', { email });
     setLocalStorage('mealsToken', 1);
@@ -61,9 +61,3 @@ export default function Login({ history }) {
     </div>
   );
 }
-
-Login.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
-};
