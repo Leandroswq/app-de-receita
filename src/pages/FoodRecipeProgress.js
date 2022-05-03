@@ -55,7 +55,7 @@ function FoodRecipeProgress() {
           <h3>Ingredients</h3>
           <div>
             {
-              createIngredientAndMeasureArray()[0]
+              createIngredientAndMeasureArray()
                 .filter((ingredient) => ingredient)
                 .map((item, ind) => (
                   <label
