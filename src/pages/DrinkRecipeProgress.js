@@ -72,7 +72,6 @@ function DrinkRecipeProgress() {
           </div>
           <h3>Instructions</h3>
           <p data-testid="instructions">{drink.strInstructions}</p>
-
           <div data-testid={ `${0}-recomendation-card` }>Receitas recomendadas</div>
           <div data-testid={ `${1}-recomendation-card` }>Receitas recomendadas</div>
           <button
