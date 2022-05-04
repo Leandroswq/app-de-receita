@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
 import shareIcon from '../images/shareIcon.svg';
 import favoritIcon from '../images/whiteHeartIcon.svg';
-import { filterValuesFromObjectToArray } from '../helpers';
+import { filterValuesFromObjectToArray, statusRecipes } from '../helpers';
 import Card from '../components/Card';
 import getFoods from '../API/getFoods';
 import Style from './css/Recipe.module.css';
@@ -15,6 +15,8 @@ function DrinkRecipe() {
   const { id } = useParams();
   const [drink, setDrink] = useState(undefined);
   const [recomendedFood, setRecomendedFood] = useState([]);
+  const [shownStartRecipeBtn, setShownStartRecipeBtn] = useState(false);
+  const { push } = useHistory();
 
   useEffect(() => {
     async function getData() {
@@ -25,12 +27,11 @@ function DrinkRecipe() {
       const response = await getFoods('', 'name');
       const data = response.meals
         .slice(0, magicNumber6);
-      console.log('data', data);
       setRecomendedFood(data);
     }
+    setShownStartRecipeBtn(statusRecipes(id, 'meals'));
     getData();
     setFoods();
-    console.log('set');
   }, []);
 
   const createIngredientAndMeasureArray = () => {
@@ -43,7 +44,11 @@ function DrinkRecipe() {
     });
     return measureAndIngredient;
   };
-  console.log(recomendedFood, 'aqui');
+
+  const handleBtnStartRecipe = () => {
+    push(`/drinks/${id}/in-progress`);
+  };
+
   return (
     <div className={ Style.container }>
 
@@ -95,7 +100,27 @@ function DrinkRecipe() {
               ))
             }
           </div>
-          <button data-testid="start-recipe-btn" type="button">Start recipe</button>
+          {shownStartRecipeBtn === 'start' && (
+            <button
+              data-testid="start-recipe-btn"
+              type="button"
+              className={ Style['fixed-btn'] }
+              onClick={ handleBtnStartRecipe }
+            >
+              Start recipe
+
+            </button>)}
+
+          {shownStartRecipeBtn === 'inProgress'
+              && (
+                <button
+                  data-testid="start-recipe-btn"
+                  type="button"
+                  className={ Style['fixed-btn'] }
+                >
+                  Continue Recipe
+
+                </button>)}
         </>
       )}
     </div>

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import getFoods from '../API/getFoods';
 import shareIcon from '../images/shareIcon.svg';
 import favoritIcon from '../images/whiteHeartIcon.svg';
-import { filterValuesFromObjectToArray } from '../helpers';
+import { filterValuesFromObjectToArray, statusRecipes } from '../helpers';
 import Card from '../components/Card';
 import getDrinks from '../API/getDrinks';
 import Style from './css/Recipe.module.css';
@@ -15,6 +15,8 @@ function FoodRecipe() {
   const { id } = useParams();
   const [food, setFood] = useState(undefined);
   const [recomendedDrinks, setRecomendedDrinks] = useState([]);
+  const [shownStartRecipeBtn, setShownStartRecipeBtn] = useState(false);
+  const { push } = useHistory();
 
   useEffect(() => {
     async function getData() {
@@ -27,6 +29,8 @@ function FoodRecipe() {
         .slice(0, magicNumber6);
       setRecomendedDrinks(data);
     }
+    setShownStartRecipeBtn(statusRecipes(id, 'meals'));
+
     getData();
     setDrinks();
   }, []);
@@ -37,6 +41,10 @@ function FoodRecipe() {
     const measureAndIngredient = ingredient
       .map((item, ind) => [item[1], measure[ind][1]]);
     return measureAndIngredient;
+  };
+
+  const handleBtnStartRecipe = () => {
+    push(`/foods/${id}/in-progress`);
   };
 
   return (
@@ -100,7 +108,27 @@ function FoodRecipe() {
               ))
             }
           </div>
-          <button data-testid="start-recipe-btn" type="button">Start recipe</button>
+          {shownStartRecipeBtn === 'start' && (
+            <button
+              data-testid="start-recipe-btn"
+              type="button"
+              className={ Style['fixed-btn'] }
+              onClick={ handleBtnStartRecipe }
+            >
+              Start recipe
+
+            </button>)}
+
+          {shownStartRecipeBtn === 'inProgress'
+              && (
+                <button
+                  data-testid="start-recipe-btn"
+                  type="button"
+                  className={ Style['fixed-btn'] }
+                >
+                  Continue Recipe
+
+                </button>)}
         </>
       )}
     </div>

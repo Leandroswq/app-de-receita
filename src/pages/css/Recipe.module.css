@@ -17,3 +17,8 @@
 .card__image, .card {
   width: 150px;
 }
+
+.fixed-btn {
+  bottom: 0;
+  position: fixed;
+}
