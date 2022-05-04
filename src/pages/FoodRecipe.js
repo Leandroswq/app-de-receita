@@ -5,17 +5,30 @@ import getFoods from '../API/getFoods';
 import shareIcon from '../images/shareIcon.svg';
 import favoritIcon from '../images/whiteHeartIcon.svg';
 import { filterValuesFromObjectToArray } from '../helpers';
+import Card from '../components/Card';
+import getDrinks from '../API/getDrinks';
+import Style from './css/Recipe.module.css';
+
+const magicNumber6 = 6;
 
 function FoodRecipe() {
   const { id } = useParams();
   const [food, setFood] = useState(undefined);
+  const [recomendedDrinks, setRecomendedDrinks] = useState([]);
 
   useEffect(() => {
     async function getData() {
       const response = await getFoods(id, 'id');
       setFood(response.meals[0]);
     }
+    async function setDrinks() {
+      const response = await getDrinks('', 'name');
+      const data = response.drinks
+        .slice(0, magicNumber6);
+      setRecomendedDrinks(data);
+    }
     getData();
+    setDrinks();
   }, []);
 
   const createIngredientAndMeasureArray = () => {
@@ -27,13 +40,14 @@ function FoodRecipe() {
   };
 
   return (
-    <div>
+    <div className={ Style.container }>
       {food !== undefined && (
         <>
           <img
             src={ food.strMealThumb }
             alt={ food.strMeal }
             data-testid="recipe-photo"
+            className={ Style['recipe-image'] }
           />
           <h2 data-testid="recipe-title">{food.strMeal}</h2>
 
@@ -72,8 +86,20 @@ function FoodRecipe() {
               .concat('encrypted-media; gyroscope; picture-in-picture') }
             allowFullScreen
           />
-          <div data-testid={ `${0}-recomendation-card` }>Receitas recomendadas</div>
-          <div data-testid={ `${1}-recomendation-card` }>Receitas recomendadas</div>
+          <div className={ Style['card-container'] }>
+            {
+              recomendedDrinks.map((item, ind) => (
+                <Card
+                  key={ item.idDrink }
+                  title={ item.strDrink }
+                  index={ ind }
+                  type="recomendation"
+                  image={ item.strDrinkThumb }
+                  style={ Style }
+                />
+              ))
+            }
+          </div>
           <button data-testid="start-recipe-btn" type="button">Start recipe</button>
         </>
       )}
