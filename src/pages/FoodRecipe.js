@@ -1,33 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getFoods from '../API/getFoods';
-import { searchRecipesAc } from '../redux/actions/searchActions';
 import shareIcon from '../images/shareIcon.svg';
 import favoritIcon from '../images/whiteHeartIcon.svg';
 import { filterValuesFromObjectToArray } from '../helpers';
 
 function FoodRecipe() {
-  const foods = useSelector(({ recipesReducer }) => recipesReducer.meals);
   const { id } = useParams();
-  const food = foods.length === 1 && foods[0].idMeal === id ? foods[0] : undefined;
-  const dispatch = useDispatch();
+  const [food, setFood] = useState(undefined);
 
   useEffect(() => {
     async function getData() {
       const response = await getFoods(id, 'id');
-      dispatch(searchRecipesAc(response));
+      setFood(response.meals[0]);
     }
     getData();
   }, []);
-  console.log(foods);
-  if (food !== undefined) {
-    console.log(filterValuesFromObjectToArray(/strMeasure/i, food));
-  }
 
   const createIngredientAndMeasureArray = () => {
-    const ingredient = filterValuesFromObjectToArray(/strIngredient1/i, food);
+    const ingredient = filterValuesFromObjectToArray(/strIngredient/i, food);
     const measure = filterValuesFromObjectToArray(/strMeasure/i, food);
     const measureAndIngredient = ingredient
       .map((item, ind) => [item[1], measure[ind][1]]);
@@ -67,8 +59,23 @@ function FoodRecipe() {
                 ))
             }
           </div>
+          <h3>Instructions</h3>
+          <p data-testid="instructions">{food.strInstructions}</p>
+          <iframe
+            data-testid="video"
+            width="300"
+            height="200"
+            src={ food.strYoutube.replace('watch?v=', 'embed/') }
+            title="YouTube video player"
+            frameBorder="0"
+            allow={ 'accelerometer; autoplay; clipboard-write; '
+              .concat('encrypted-media; gyroscope; picture-in-picture') }
+            allowFullScreen
+          />
+          <div data-testid={ `${0}-recomendation-card` }>Receitas recomendadas</div>
+          <div data-testid={ `${1}-recomendation-card` }>Receitas recomendadas</div>
+          <button data-testid="start-recipe-btn" type="button">Start recipe</button>
         </>
-
       )}
     </div>
   );
