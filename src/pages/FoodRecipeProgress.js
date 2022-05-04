@@ -26,10 +26,11 @@ function FoodRecipeProgress() {
   }
 
   const createIngredientAndMeasureArray = () => {
-    const ingredient = filterValuesFromObjectToArray(/strIngredient1/i, food);
+    const ingredient = filterValuesFromObjectToArray(/strIngredient/i, food);
     const measure = filterValuesFromObjectToArray(/strMeasure/i, food);
     const measureAndIngredient = ingredient
       .map((item, ind) => [item[1], measure[ind][1]]);
+    console.log(food);
     return measureAndIngredient;
   };
 
@@ -56,12 +57,11 @@ function FoodRecipeProgress() {
           <div>
             {
               createIngredientAndMeasureArray()
-                .filter((ingredient) => ingredient)
                 .map((item, ind) => (
                   <label
                     key={ `ingredient-${ind}` }
                     htmlFor={ `ingredient-${ind}` }
-                    data-testid={ `${ind}-ingredient-step` }
+                    data-testid="ingredient-step"
                   >
                     <input
                       type="checkbox"
