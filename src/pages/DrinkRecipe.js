@@ -29,7 +29,7 @@ function DrinkRecipe() {
         .slice(0, magicNumber6);
       setRecomendedFood(data);
     }
-    setShownStartRecipeBtn(statusRecipes(id, 'meals'));
+    setShownStartRecipeBtn(statusRecipes(id, 'cocktails'));
     getData();
     setFoods();
   }, []);
