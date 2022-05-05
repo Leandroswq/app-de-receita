@@ -1,3 +1,5 @@
+export const baseURL = 'http://localhost:3000';
+
 export const setLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
