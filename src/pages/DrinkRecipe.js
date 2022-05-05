@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
-import favoritIcon from '../images/whiteHeartIcon.svg';
 import { filterValuesFromObjectToArray, statusRecipes } from '../helpers';
 import Card from '../components/Card';
 import getFoods from '../API/getFoods';
 import Style from './css/Recipe.module.css';
 import ShareBTN from '../components/ShareBTN';
+import FavoriteBTN from '../components/FavoriteBTN';
 
 const magicNumber6 = 6;
 
@@ -63,9 +63,7 @@ function DrinkRecipe() {
           <h2 data-testid="recipe-title">{drink.strDrink}</h2>
 
           <ShareBTN />
-          <button type="button" data-testid="favorite-btn">
-            <img src={ favoritIcon } alt="favorite" />
-          </button>
+          <FavoriteBTN recipe={ drink } />
 
           <p data-testid="recipe-category">{drink.strAlcoholic}</p>
           <h3>Ingredients</h3>

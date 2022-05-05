@@ -29,8 +29,6 @@ export const statusRecipes = (id, key) => {
   }
   const inProgressRecipes = getLocalStorage('inProgressRecipes');
   if (inProgressRecipes && inProgressRecipes[key]) {
-    console.log(key);
-    console.log(inProgressRecipes);
     const atualRecipe = inProgressRecipes[key][id];
     if (atualRecipe) {
       return 'inProgress';
