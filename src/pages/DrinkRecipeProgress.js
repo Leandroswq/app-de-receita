@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
-import shareIcon from '../images/shareIcon.svg';
-import favoritIcon from '../images/whiteHeartIcon.svg';
 import { filterValuesFromObjectToArray } from '../helpers';
+import ShareBTN from '../components/ShareBTN';
+import FavoriteBTN from '../components/FavoriteBTN';
 
 function DrinkRecipeProgress() {
   const { id } = useParams();
@@ -42,12 +42,8 @@ function DrinkRecipeProgress() {
           />
           <h2 data-testid="recipe-title">{drink.strDrink}</h2>
 
-          <button type="button" data-testid="share-btn">
-            <img src={ shareIcon } alt="share" />
-          </button>
-          <button type="button" data-testid="favorite-btn">
-            <img src={ favoritIcon } alt="favorite" />
-          </button>
+          <ShareBTN />
+          <FavoriteBTN recipe={ drink } />
 
           <p data-testid="recipe-category">{drink.strAlcoholic}</p>
           <h3>Ingredients</h3>

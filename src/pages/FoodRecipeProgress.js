@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import getFoods from '../API/getFoods';
 import { searchRecipesAc } from '../redux/actions/searchActions';
-import shareIcon from '../images/shareIcon.svg';
-import favoritIcon from '../images/whiteHeartIcon.svg';
 import { filterValuesFromObjectToArray } from '../helpers';
+import ShareBTN from '../components/ShareBTN';
+import FavoriteBTN from '../components/FavoriteBTN';
 
 function FoodRecipeProgress() {
   const foods = useSelector(({ recipesReducer }) => recipesReducer.meals);
@@ -45,12 +45,8 @@ function FoodRecipeProgress() {
           />
           <h2 data-testid="recipe-title">{food.strMeal}</h2>
 
-          <button type="button" data-testid="share-btn">
-            <img src={ shareIcon } alt="share" />
-          </button>
-          <button type="button" data-testid="favorite-btn">
-            <img src={ favoritIcon } alt="favorite" />
-          </button>
+          <ShareBTN />
+          <FavoriteBTN recipe={ food } />
 
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
