@@ -26,9 +26,7 @@ function ExploreFoodIngredients() {
   }, []);
 
   async function searchItem(filter) {
-    console.log(filter);
     const data = await getFoods(filter, 'ingredient');
-    console.log(data);
     dispatch(searchRecipesAc(data));
     push('/foods');
   }

@@ -43,7 +43,6 @@ function FavoriteBTN({ recipe }) {
         .find((item) => Number(item.id) === Number(id));
       if (recipeValidation) {
         setFavorite(true);
-        console.log(recipeValidation);
       }
     } else {
       setLocalStorage('favoriteRecipes', []);
