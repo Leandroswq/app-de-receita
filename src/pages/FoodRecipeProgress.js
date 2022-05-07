@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import getFoods from '../API/getFoods';
 import { searchRecipesAc } from '../redux/actions/searchActions';
-import { filterValuesFromObjectToArray } from '../helpers';
 import ShareBTN from '../components/ShareBTN';
 import FavoriteBTN from '../components/FavoriteBTN';
+import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
 
 function FoodRecipeProgress() {
   const foods = useSelector(({ recipesReducer }) => recipesReducer.meals);
@@ -20,19 +21,6 @@ function FoodRecipeProgress() {
     }
     getData();
   }, []);
-
-  if (food !== undefined) {
-    console.log(filterValuesFromObjectToArray(/strMeasure/i, food));
-  }
-
-  const createIngredientAndMeasureArray = () => {
-    const ingredient = filterValuesFromObjectToArray(/strIngredient/i, food);
-    const measure = filterValuesFromObjectToArray(/strMeasure/i, food);
-    const measureAndIngredient = ingredient
-      .map((item, ind) => [item[1], measure[ind][1]]);
-    console.log(food);
-    return measureAndIngredient;
-  };
 
   return (
     <div>
@@ -50,28 +38,11 @@ function FoodRecipeProgress() {
 
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
-          <div>
-            {
-              createIngredientAndMeasureArray()
-                .map((item, ind) => (
-                  <label
-                    key={ `ingredient-${ind}` }
-                    htmlFor={ `ingredient-${ind}` }
-                    data-testid="ingredient-step"
-                  >
-                    <input
-                      type="checkbox"
-                      name={ `ingredient-${ind}` }
-                      id={ `ingredient-${ind}` }
-                    />
-                    {`-${item[0]}-${item[1]}`}
-                  </label>
-                ))
-            }
-          </div>
+          <ProgressIngredientsRecipe recipe={ food } type="food" id={ id } />
+
           <h3>Instructions</h3>
           <p data-testid="instructions">{food.strInstructions}</p>
-          <iframe
+          {/*           <iframe
             data-testid="video"
             width="300"
             height="200"
@@ -81,7 +52,7 @@ function FoodRecipeProgress() {
             allow={ 'accelerometer; autoplay; clipboard-write; '
               .concat('encrypted-media; gyroscope; picture-in-picture') }
             allowFullScreen
-          />
+          /> */}
           <button
             data-testid="finish-recipe-btn"
             type="button"
