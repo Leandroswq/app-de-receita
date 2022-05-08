@@ -4,9 +4,17 @@ import PropTypes from 'prop-types';
 import { filterValuesFromObjectToArray, getLocalStorage, setLocalStorage }
 from '../helpers';
 
-function ProgressIngredientsRecipe({ recipe, type, id }) {
+const disableButtonAux = (func, ingredientArray) => {
+  if (func) {
+    const disabled = ingredientArray.some((item) => !item[1]);
+    func(disabled);
+  }
+};
+
+function ProgressIngredientsRecipe({ recipe, type, id, disableButton }) {
   const [ingredientsUsed, setIngredientsUsed] = useState([]);
   const mealsOrCocktails = type === 'food' ? 'meals' : 'cocktails';
+
   useEffect(() => {
     const ingredients = filterValuesFromObjectToArray(/strIngredient/i, recipe)
       .map((item) => [item[1], false]);
@@ -26,6 +34,9 @@ function ProgressIngredientsRecipe({ recipe, type, id }) {
         meals: {},
       });
     }
+
+    disableButtonAux(disableButton, ingredients);
+
     setIngredientsUsed(ingredients);
   }, []);
 
@@ -43,15 +54,14 @@ function ProgressIngredientsRecipe({ recipe, type, id }) {
     const ingredientsaAux = [...ingredientsUsed];
     ingredientsaAux[ind] = [ingredientsaAux[ind][0], !ingredientsaAux[ind][1]];
     const inProgressRecipes = getLocalStorage('inProgressRecipes');
-    console.log(inProgressRecipes);
     inProgressRecipes[mealsOrCocktails][id] = ingredientsaAux
       .filter((item) => item[1])
       .map((item) => item[0]);
     setLocalStorage('inProgressRecipes', inProgressRecipes);
     setIngredientsUsed(ingredientsaAux);
+    disableButtonAux(disableButton, ingredientsaAux);
   };
 
-  console.log(ingredientsUsed);
   return (
     <div>
       {ingredientsUsed.length > 0 && (
@@ -83,6 +93,10 @@ ProgressIngredientsRecipe.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  disableButton: PropTypes.func,
 
+};
+ProgressIngredientsRecipe.defaultProps = {
+  disableButton: undefined,
 };
 export default ProgressIngredientsRecipe;

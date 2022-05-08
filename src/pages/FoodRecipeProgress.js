@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import getFoods from '../API/getFoods';
@@ -12,6 +12,7 @@ function FoodRecipeProgress() {
   const foods = useSelector(({ recipesReducer }) => recipesReducer.meals);
   const { id } = useParams();
   const food = foods.length === 1 && foods[0].idMeal === id ? foods[0] : undefined;
+  const [finsishDisabled, setFinishDisabled] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,7 +39,12 @@ function FoodRecipeProgress() {
 
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
-          <ProgressIngredientsRecipe recipe={ food } type="food" id={ id } />
+          <ProgressIngredientsRecipe
+            recipe={ food }
+            type="food"
+            id={ id }
+            disableButton={ setFinishDisabled }
+          />
 
           <h3>Instructions</h3>
           <p data-testid="instructions">{food.strInstructions}</p>
@@ -56,6 +62,8 @@ function FoodRecipeProgress() {
           <button
             data-testid="finish-recipe-btn"
             type="button"
+            disabled={ finsishDisabled }
+
           >
             Finalizar
           </button>
