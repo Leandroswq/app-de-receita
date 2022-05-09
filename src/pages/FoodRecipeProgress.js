@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import getFoods from '../API/getFoods';
 import ShareBTN from '../components/ShareBTN';
 import FavoriteBTN from '../components/FavoriteBTN';
@@ -10,6 +10,7 @@ function FoodRecipeProgress() {
   const { id } = useParams();
   const [food, setFood] = useState(undefined);
   const [finsishDisabled, setFinishDisabled] = useState(true);
+  const { push } = useHistory();
 
   useEffect(() => {
     async function getData() {
@@ -18,6 +19,10 @@ function FoodRecipeProgress() {
     }
     getData();
   }, []);
+
+  const handleFinshiRecipe = () => {
+    push('/done-recipes');
+  };
 
   return (
     <div>
@@ -59,7 +64,7 @@ function FoodRecipeProgress() {
             data-testid="finish-recipe-btn"
             type="button"
             disabled={ finsishDisabled }
-
+            onClick={ handleFinshiRecipe }
           >
             Finalizar
           </button>
