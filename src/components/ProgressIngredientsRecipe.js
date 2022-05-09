@@ -72,7 +72,7 @@ function ProgressIngredientsRecipe({ recipe, type, id, disableButton }) {
                 <label
                   key={ `ingredient-${ind}` }
                   htmlFor={ `ingredient-${ind}` }
-                  data-testid={ `${ind}ingredient-step` }
+                  data-testid={ `${ind}-ingredient-step` }
                 >
                   <input
                     type="checkbox"
