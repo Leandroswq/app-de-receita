@@ -1,37 +1,27 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import getFoods from '../API/getFoods';
-import { searchRecipesAc } from '../redux/actions/searchActions';
-import shareIcon from '../images/shareIcon.svg';
-import favoritIcon from '../images/whiteHeartIcon.svg';
-import { filterValuesFromObjectToArray } from '../helpers';
+import ShareBTN from '../components/ShareBTN';
+import FavoriteBTN from '../components/FavoriteBTN';
+import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
 
 function FoodRecipeProgress() {
-  const foods = useSelector(({ recipesReducer }) => recipesReducer.meals);
   const { id } = useParams();
-  const food = foods.length === 1 && foods[0].idMeal === id ? foods[0] : undefined;
-  const dispatch = useDispatch();
+  const [food, setFood] = useState(undefined);
+  const [finsishDisabled, setFinishDisabled] = useState(true);
+  const { push } = useHistory();
 
   useEffect(() => {
     async function getData() {
       const response = await getFoods(id, 'id');
-      dispatch(searchRecipesAc(response));
+      setFood(response.meals[0]);
     }
     getData();
   }, []);
 
-  if (food !== undefined) {
-    console.log(filterValuesFromObjectToArray(/strMeasure/i, food));
-  }
-
-  const createIngredientAndMeasureArray = () => {
-    const ingredient = filterValuesFromObjectToArray(/strIngredient/i, food);
-    const measure = filterValuesFromObjectToArray(/strMeasure/i, food);
-    const measureAndIngredient = ingredient
-      .map((item, ind) => [item[1], measure[ind][1]]);
-    console.log(food);
-    return measureAndIngredient;
+  const handleFinshiRecipe = () => {
+    push('/done-recipes');
   };
 
   return (
@@ -45,34 +35,18 @@ function FoodRecipeProgress() {
           />
           <h2 data-testid="recipe-title">{food.strMeal}</h2>
 
-          <button type="button" data-testid="share-btn">
-            <img src={ shareIcon } alt="share" />
-          </button>
-          <button type="button" data-testid="favorite-btn">
-            <img src={ favoritIcon } alt="favorite" />
-          </button>
+          <ShareBTN />
+          <FavoriteBTN recipe={ food } />
 
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
-          <div>
-            {
-              createIngredientAndMeasureArray()
-                .map((item, ind) => (
-                  <label
-                    key={ `ingredient-${ind}` }
-                    htmlFor={ `ingredient-${ind}` }
-                    data-testid="ingredient-step"
-                  >
-                    <input
-                      type="checkbox"
-                      name={ `ingredient-${ind}` }
-                      id={ `ingredient-${ind}` }
-                    />
-                    {`-${item[0]}-${item[1]}`}
-                  </label>
-                ))
-            }
-          </div>
+          <ProgressIngredientsRecipe
+            recipe={ food }
+            type="food"
+            id={ id }
+            disableButton={ setFinishDisabled }
+          />
+
           <h3>Instructions</h3>
           <p data-testid="instructions">{food.strInstructions}</p>
           <iframe
@@ -89,6 +63,8 @@ function FoodRecipeProgress() {
           <button
             data-testid="finish-recipe-btn"
             type="button"
+            disabled={ finsishDisabled }
+            onClick={ handleFinshiRecipe }
           >
             Finalizar
           </button>

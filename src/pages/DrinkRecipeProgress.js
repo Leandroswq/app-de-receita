@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
-import shareIcon from '../images/shareIcon.svg';
-import favoritIcon from '../images/whiteHeartIcon.svg';
-import { filterValuesFromObjectToArray } from '../helpers';
+import ShareBTN from '../components/ShareBTN';
+import FavoriteBTN from '../components/FavoriteBTN';
+import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
 
 function DrinkRecipeProgress() {
   const { id } = useParams();
   const [drink, setDrink] = useState(undefined);
+  const [finsishDisabled, setFinishDisabled] = useState(true);
+  const { push } = useHistory();
 
   useEffect(() => {
     async function getData() {
@@ -18,17 +20,8 @@ function DrinkRecipeProgress() {
     getData();
   }, []);
 
-  const createIngredientAndMeasureArray = () => {
-    const ingredient = filterValuesFromObjectToArray(/strIngredient/i, drink);
-    const measure = filterValuesFromObjectToArray(/strMeasure/i, drink);
-    console.log(ingredient);
-    console.log(measure);
-    const measureAndIngredient = ingredient.map((item, ind) => {
-      const ing = item[1];
-      const meas = measure[ind] ? measure[ind][1] : '';
-      return [ing, meas];
-    });
-    return measureAndIngredient;
+  const handleFinshiRecipe = () => {
+    push('/done-recipes');
   };
 
   return (
@@ -42,34 +35,17 @@ function DrinkRecipeProgress() {
           />
           <h2 data-testid="recipe-title">{drink.strDrink}</h2>
 
-          <button type="button" data-testid="share-btn">
-            <img src={ shareIcon } alt="share" />
-          </button>
-          <button type="button" data-testid="favorite-btn">
-            <img src={ favoritIcon } alt="favorite" />
-          </button>
+          <ShareBTN />
+          <FavoriteBTN recipe={ drink } />
 
           <p data-testid="recipe-category">{drink.strAlcoholic}</p>
           <h3>Ingredients</h3>
-          <div>
-            {
-              createIngredientAndMeasureArray()
-                .map((item, ind) => (
-                  <label
-                    key={ `ingredient-${ind}` }
-                    htmlFor={ `ingredient-${ind}` }
-                    data-testid="ingredient-step"
-                  >
-                    <input
-                      type="checkbox"
-                      name={ `ingredient-${ind}` }
-                      id={ `ingredient-${ind}` }
-                    />
-                    {`-${item[0]}-${item[1]}`}
-                  </label>
-                ))
-            }
-          </div>
+          <ProgressIngredientsRecipe
+            recipe={ drink }
+            type="drink"
+            id={ id }
+            disableButton={ setFinishDisabled }
+          />
           <h3>Instructions</h3>
           <p data-testid="instructions">{drink.strInstructions}</p>
           <div data-testid={ `${0}-recomendation-card` }>Receitas recomendadas</div>
@@ -77,6 +53,9 @@ function DrinkRecipeProgress() {
           <button
             data-testid="finish-recipe-btn"
             type="button"
+            disabled={ finsishDisabled }
+            onClick={ handleFinshiRecipe }
+
           >
             Finalizar
           </button>

@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CardDoneRecipes from '../components/CardDoneRecipes';
 import Header from '../components/Header';
-import { getLocalStorage } from '../helpers';
+import { getLocalStorage, setLocalStorage } from '../helpers';
 
 function DoneRecipes() {
-  const data = getLocalStorage('doneRecipes');
-
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const doneRecipes = getLocalStorage('doneRecipes');
+    if (doneRecipes) {
+      setData(doneRecipes);
+    } else {
+      setLocalStorage('doneRecipes', []);
+    }
+  }, []);
   return (
     <div>
       <Header title="Done Recipes" />

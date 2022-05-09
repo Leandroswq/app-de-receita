@@ -121,6 +121,8 @@ function FoodRecipe() {
                   data-testid="start-recipe-btn"
                   type="button"
                   className={ Style['fixed-btn'] }
+                  onClick={ handleBtnStartRecipe }
+
                 >
                   Continue Recipe
 
