@@ -1,24 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import getFoods from '../API/getFoods';
-import { searchRecipesAc } from '../redux/actions/searchActions';
 import ShareBTN from '../components/ShareBTN';
 import FavoriteBTN from '../components/FavoriteBTN';
 import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
 
 function FoodRecipeProgress() {
-  const foods = useSelector(({ recipesReducer }) => recipesReducer.meals);
   const { id } = useParams();
-  const food = foods.length === 1 && foods[0].idMeal === id ? foods[0] : undefined;
+  const [food, setFood] = useState(undefined);
   const [finsishDisabled, setFinishDisabled] = useState(true);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getData() {
       const response = await getFoods(id, 'id');
-      dispatch(searchRecipesAc(response));
+      setFood(response.meals[0]);
     }
     getData();
   }, []);
