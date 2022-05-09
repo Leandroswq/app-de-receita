@@ -56,7 +56,6 @@ function ExploreFoodNationalities() {
                 </option>
               ))
             }
-
           </select>
         </label>
       </form>
