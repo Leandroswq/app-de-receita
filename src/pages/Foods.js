@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Style from './css/foodsAndDrinks.module.css';
+import Style from './css/FoodsAndDrinks.module.css';
 import Card from '../components/Card';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -66,9 +66,9 @@ function Foods() {
   }
 
   return (
-    <div className={ Stle.container}>
+    <div className={ Style.container }>
       <Header hasSearch title="Foods" />
-      <div>
+      <div className={ Style.filters }>
         <button
           data-testid="All-category-filter"
           type="button"
@@ -93,7 +93,7 @@ function Foods() {
         }
       </div>
 
-      <div>
+      <div className={ Style.content }>
         {
           meals && meals.slice(0, maxNumber)
             .map(({ idMeal, strMealThumb, strMeal }, index) => (

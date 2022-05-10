@@ -1,0 +1,19 @@
+.container {
+  background-color: var(--cor-secundaria-placeholder);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  width: 150px;
+}
+
+.container img {
+  border-radius: 10px;
+  width: 100%;
+
+}
+
+.container h2 {
+  color: var(--cor-texto);
+}

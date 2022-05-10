@@ -1,0 +1,18 @@
+.container {
+  align-items: center;
+  background-color: var(--cor-secundaria);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  width: 100%;
+}
+
+.content{
+
+}
+
+.filters{
+
+}
