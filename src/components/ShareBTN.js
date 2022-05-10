@@ -16,7 +16,7 @@ function ShareBTN({ recipeType, dataTestid, idCard }) {
   const [showMessage, setShowMessage] = useState(false);
   const handleFavoritButton = () => {
     const aux = recipeType || basePage;
-    const auxId = idCard || id;
+    const auxId = idCard === '' ? id : idCard;
     navigator.clipboard.writeText(`${baseURL}/${aux}/${auxId}`);
     setShowMessage((p) => !p);
     setTimeout(() => {
@@ -60,7 +60,7 @@ ShareBTN.propTypes = {
 ShareBTN.defaultProps = {
   recipeType: null,
   dataTestid: null,
-  idCard: PropTypes.string,
+  idCard: '',
 };
 
 export default ShareBTN;
