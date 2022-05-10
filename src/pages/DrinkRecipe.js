@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
 import getDrinks from '../API/getDrinks';
 import { filterValuesFromObjectToArray, statusRecipes } from '../helpers';
 import Card from '../components/Card';
@@ -17,6 +18,7 @@ function DrinkRecipe() {
   const [recomendedFood, setRecomendedFood] = useState([]);
   const [shownStartRecipeBtn, setShownStartRecipeBtn] = useState(false);
   const { push } = useHistory();
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     async function getData() {
@@ -27,7 +29,13 @@ function DrinkRecipe() {
       const response = await getFoods('', 'name');
       const data = response.meals
         .slice(0, magicNumber6);
-      setRecomendedFood(data);
+      const dataAux = [];
+      data.forEach((value, ind) => {
+        if (ind % 2 === 0) {
+          dataAux.push([value, data[ind + 1]]);
+        }
+      });
+      setRecomendedFood(dataAux);
     }
     setShownStartRecipeBtn(statusRecipes(id, 'cocktails'));
     getData();
@@ -47,6 +55,10 @@ function DrinkRecipe() {
 
   const handleBtnStartRecipe = () => {
     push(`/drinks/${id}/in-progress`);
+  };
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
   };
 
   return (
@@ -82,20 +94,34 @@ function DrinkRecipe() {
           </div>
           <h3>Instructions</h3>
           <p data-testid="instructions">{drink.strInstructions}</p>
-          <div className={ Style['card-container'] }>
+          <Carousel
+            className="p-3"
+            tabIndex={ index }
+            activeIndex={ index }
+            onSelect={ handleSelect }
+            variant="dark"
+          >
             {
               recomendedFood.map((item, ind) => (
-                <Card
-                  key={ item.idMeal }
-                  title={ item.strMeal }
-                  index={ ind }
-                  type="recomendation"
-                  image={ item.strMealThumb }
-                  style={ Style }
-                />
+                <Carousel.Item key={ item[0].idMeal }>
+                  <div className={ Style.Card }>
+                    <Card
+                      title={ item[0].strMeal }
+                      index={ ind * 2 }
+                      type="recomendation"
+                      image={ item[0].strMealThumb }
+                    />
+                    <Card
+                      title={ item[1].strMeal }
+                      index={ (ind * 2) + 1 }
+                      type="recomendation"
+                      image={ item[1].strMealThumb }
+                    />
+                  </div>
+                </Carousel.Item>
               ))
             }
-          </div>
+          </Carousel>
           {shownStartRecipeBtn === 'start' && (
             <button
               data-testid="start-recipe-btn"

@@ -56,7 +56,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   type: 'recipe',
-  style: false,
+  style: {},
 };
 
 export default Card;
