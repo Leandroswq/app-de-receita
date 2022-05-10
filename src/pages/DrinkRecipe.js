@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
+import { useHistory, useParams } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
-import { filterValuesFromObjectToArray, statusRecipes } from '../helpers';
-import Card from '../components/Card';
 import getFoods from '../API/getFoods';
-import Style from './css/Recipe.module.css';
-import ShareBTN from '../components/ShareBTN';
+import Card from '../components/Card';
 import FavoriteBTN from '../components/FavoriteBTN';
+import ShareBTN from '../components/ShareBTN';
+import { filterValuesFromObjectToArray, statusRecipes } from '../helpers';
+import Style from './css/Recipe.module.css';
 
 const magicNumber6 = 6;
 

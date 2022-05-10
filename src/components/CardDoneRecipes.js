@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FavoriteBTN from './FavoriteBTN';
 import ShareBTN from './ShareBTN';
 
-function CardDoneRecipes({ data, index }) {
+function CardDoneRecipes({ data, index, setData }) {
   const { name, image, category, doneDate, tags,
     nationality, type, alcoholicOrNot, id } = data;
   let auxType;
@@ -40,6 +41,11 @@ function CardDoneRecipes({ data, index }) {
             {elem}
           </p>))
       }
+      <FavoriteBTN
+        dataTestid={ `${index}-horizontal-favorite-btn` }
+        recipe={ data }
+        setData={ setData }
+      />
     </div>
   );
 }
@@ -57,6 +63,11 @@ CardDoneRecipes.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   index: PropTypes.number.isRequired,
+  setData: PropTypes.func,
+};
+
+CardDoneRecipes.defaultProps = {
+  setData: () => {},
 };
 
 export default CardDoneRecipes;
