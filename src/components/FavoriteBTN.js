@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { getLocalStorage, setLocalStorage } from '../helpers';
-import noFavoriteicon from '../images/whiteHeartIcon.svg';
 import favoritIcon from '../images/blackHeartIcon.svg';
+import noFavoriteicon from '../images/whiteHeartIcon.svg';
 
 function createFavoriteObj(recipe, basePage) {
   if (basePage === 'drinks') {
@@ -28,12 +28,20 @@ function createFavoriteObj(recipe, basePage) {
       image: recipe.strMealThumb,
     };
   }
+  console.log(recipe);
+  return recipe;
+}
+function getID(recipe) {
+  if (recipe.idDrink) return recipe.idDrink;
+  if (recipe.idMeal) return recipe.idMeal;
+  return recipe.id;
 }
 
-function FavoriteBTN({ recipe }) {
+function FavoriteBTN({ recipe, dataTestid, setData }) {
   const { location: { pathname } } = useHistory();
   const basePage = pathname.split('/')[1];
-  const { id } = useParams();
+  const id = getID(recipe);
+  console.log(id);
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
@@ -58,12 +66,13 @@ function FavoriteBTN({ recipe }) {
     }
     setLocalStorage('favoriteRecipes', favoriteRecipes);
     setFavorite((p) => !p);
+    setData(favoriteRecipes);
   };
 
   return (
     <button
       type="button"
-      data-testid="favorite-btn"
+      data-testid={ dataTestid || 'favorite-btn' }
       onClick={ handleClick }
       src={ favorite ? favoritIcon : noFavoriteicon }
     >
@@ -73,7 +82,13 @@ function FavoriteBTN({ recipe }) {
 }
 
 FavoriteBTN.propTypes = {
+  dataTestid: PropTypes.string,
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  setData: PropTypes.func,
 };
 
+FavoriteBTN.defaultProps = {
+  dataTestid: null,
+  setData: () => {},
+};
 export default FavoriteBTN;

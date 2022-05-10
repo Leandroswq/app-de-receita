@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
-import ShareBTN from '../components/ShareBTN';
 import FavoriteBTN from '../components/FavoriteBTN';
 import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
+import ShareBTN from '../components/ShareBTN';
 
 function DrinkRecipeProgress() {
   const { id } = useParams();
