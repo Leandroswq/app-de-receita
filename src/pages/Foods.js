@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Style from './css/foodsAndDrinks.module.css';
 import Card from '../components/Card';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -65,7 +66,7 @@ function Foods() {
   }
 
   return (
-    <div>
+    <div className={ Stle.container}>
       <Header hasSearch title="Foods" />
       <div>
         <button

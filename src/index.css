@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --cor-principal: rgb(255, 114, 105);
+  --cor-principal-disabled: rgba(255, 115, 105, 0.807);
+  --cor-secundaria: rgb(39, 42, 50);
+  --cor-texto: rgb(255, 255, 255);
+  --cor-texto-secundaria: rgb(104, 111, 130);
+}
