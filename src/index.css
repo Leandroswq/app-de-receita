@@ -7,8 +7,10 @@
 :root {
   --cor-principal: rgb(255, 114, 105);
   --cor-principal-disabled: rgba(255, 115, 105, 0.807);
-  --cor-secundaria: rgb(39, 42, 50);
+  --cor-secundaria: rgb(44, 47, 56);
   --cor-secundaria-placeholder: rgb(53, 56, 66);
+  --cor-placeholder-escura: rgb(37, 40, 48);
   --cor-texto: rgb(255, 255, 255);
   --cor-texto-secundaria: rgb(104, 111, 130);
+  --cor-icon-unselect: rgb(163, 169, 186);
 }

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Arrow from '../images/arrowRight.svg';
 import Style from './css/FoodsAndDrinks.module.css';
 import Card from '../components/Card';
 import Header from '../components/Header';
@@ -68,29 +69,35 @@ function Foods() {
   return (
     <div className={ Style.container }>
       <Header hasSearch title="Foods" />
-      <div className={ Style.filters }>
-        <button
-          data-testid="All-category-filter"
-          type="button"
-          onClick={ () => handleCategorieBtnClick('All') }
-        >
-          All
-
-        </button>
-        {
-          mealsCategories.slice(0, magicNumber5)
-            .map((categorie, index) => (
-              <button
-                key={ categorie.strCategory }
-                data-testid={ `${categorie.strCategory}-category-filter` }
-                type="button"
-                onClick={ () => handleCategorieBtnClick(categorie.strCategory,
-                  `categorie${index}`) }
-              >
-                {categorie.strCategory}
-              </button>
-            ))
-        }
+      <div className={ Style['categories-container'] }>
+        <div className={ Style.title }>
+          <h1> Categories </h1>
+          <button
+            data-testid="All-category-filter"
+            className={ Style.allBtn }
+            type="button"
+            onClick={ () => handleCategorieBtnClick('All') }
+          >
+            All
+            <img src={ Arrow } alt="Arrow Right" />
+          </button>
+        </div>
+        <div className={ Style.categories }>
+          {
+            mealsCategories.slice(0, magicNumber5)
+              .map((categorie, index) => (
+                <button
+                  key={ categorie.strCategory }
+                  data-testid={ `${categorie.strCategory}-category-filter` }
+                  type="button"
+                  onClick={ () => handleCategorieBtnClick(categorie.strCategory,
+                    `categorie${index}`) }
+                >
+                  {categorie.strCategory}
+                </button>
+              ))
+          }
+        </div>
       </div>
 
       <div className={ Style.content }>

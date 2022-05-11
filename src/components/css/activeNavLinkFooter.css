@@ -1,0 +1,20 @@
+/* stylelint-disable selector-pseudo-element-colon-notation */
+.active svg {
+  color: var(--cor-principal);
+}
+
+.active {
+  position: relative;
+}
+
+.active::before {
+  background-color: var(--cor-principal);
+  border-radius: 50%;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 5px;
+  position: absolute;
+  right: 21px;
+  width: 5px;
+}

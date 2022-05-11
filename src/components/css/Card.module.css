@@ -1,19 +1,28 @@
+/* stylelint-disable property-no-vendor-prefix */
 .container {
   background-color: var(--cor-secundaria-placeholder);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  height: 190px;
   padding: 1rem;
   width: 150px;
 }
 
 .container img {
-  border-radius: 10px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 10px 13px -7px black , 7px 5px 16px 11px rgba(0, 0, 0, 0);
+  box-shadow: 0 10px 13px -7px black , 7px 5px 16px 11px rgba(0, 0, 0, 0);
   width: 100%;
-
 }
 
 .container h2 {
   color: var(--cor-texto);
+  display: inline-block;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

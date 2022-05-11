@@ -1,7 +1,9 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import getDrinks from '../API/getDrinks';
+import Style from './css/SearchBar.module.css';
 import getFoods from '../API/getFoods';
 import { searchRecipesAc } from '../redux/actions/searchActions';
 
@@ -55,15 +57,20 @@ function SearchBar() {
   };
 
   return (
-    <form>
+    <form className={ Style.container }>
       <input
         data-testid="search-input"
         name="input"
+        className={ Style.searchInput }
         value={ filters.input }
+        placeholder="Type here to search"
         onChange={ handleChange }
       />
-      <div>
-        <label htmlFor="ingredient-search-radio">
+      <div className={ Style.filters }>
+        <label
+          htmlFor="ingredient-search-radio"
+          className={ Style['rad-label'] }
+        >
           <input
             type="radio"
             name="filters"
@@ -71,10 +78,15 @@ function SearchBar() {
             data-testid="ingredient-search-radio"
             onChange={ handleChange }
             value="ingredient"
+            className={ Style['rad-input'] }
           />
-          Ingredient
+          <div className={ Style['rad-design'] } />
+          <div className={ Style['rad-text'] }>Ingredient</div>
         </label>
-        <label htmlFor="name-search-radio">
+        <label
+          htmlFor="name-search-radio"
+          className={ Style['rad-label'] }
+        >
           <input
             type="radio"
             name="filters"
@@ -82,10 +94,15 @@ function SearchBar() {
             data-testid="name-search-radio"
             value="name"
             onChange={ handleChange }
+            className={ Style['rad-input'] }
           />
-          Name
+          <div className={ Style['rad-design'] } />
+          <div className={ Style['rad-text'] }>Name</div>
         </label>
-        <label htmlFor="first-letter-search-radio">
+        <label
+          htmlFor="first-letter-search-radio"
+          className={ Style['rad-label'] }
+        >
           <input
             type="radio"
             name="filters"
@@ -93,12 +110,15 @@ function SearchBar() {
             id="first-letter-search-radio"
             value="firstLetter"
             onChange={ handleChange }
+            className={ Style['rad-input'] }
           />
-          First Letter
+          <div className={ Style['rad-design'] } />
+          <div className={ Style['rad-text'] }>First Letter</div>
         </label>
       </div>
       <button
         type="button"
+        className={ Style.searchBtn }
         data-testid="exec-search-btn"
         onClick={ handleClick }
       >
