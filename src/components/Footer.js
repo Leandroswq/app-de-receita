@@ -13,6 +13,7 @@ function Footer() {
       <NavLink
         to="/drinks"
         type="button"
+        activeClassName="activeNavLinkFooter"
       >
         <img
           data-testid="drinks-bottom-btn"
@@ -24,6 +25,7 @@ function Footer() {
       <NavLink
         to="/explore"
         type="button"
+        activeClassName="activeNavLinkFooter"
       >
         <img
           data-testid="explore-bottom-btn"
@@ -35,6 +37,7 @@ function Footer() {
       <NavLink
         to="/foods"
         type="button"
+        activeClassName="activeNavLinkFooter"
       >
         <img
           data-testid="food-bottom-btn"

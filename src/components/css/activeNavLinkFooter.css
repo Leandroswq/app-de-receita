@@ -1,13 +1,13 @@
 /* stylelint-disable selector-pseudo-element-colon-notation */
-.active svg {
+.activeNavLinkFooter svg {
   color: var(--cor-principal);
 }
 
-.active {
+.activeNavLinkFooter {
   position: relative;
 }
 
-.active::before {
+.activeNavLinkFooter::before {
   background-color: var(--cor-principal);
   border-radius: 50%;
   bottom: 0;
