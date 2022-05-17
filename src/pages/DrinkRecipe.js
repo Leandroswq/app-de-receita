@@ -75,7 +75,7 @@ function DrinkRecipe() {
           <div className={ Style.titleAndIcons }>
             <h2 data-testid="recipe-title">{drink.strDrink}</h2>
             <div className={ Style.icons }>
-              <ShareBTN />
+              <ShareBTN tooltipPosition="top" />
               <FavoriteBTN recipe={ drink } />
             </div>
           </div>

@@ -72,7 +72,7 @@ function FoodRecipe() {
           <div className={ Style.titleAndIcons }>
             <h2 data-testid="recipe-title">{food.strMeal}</h2>
             <div className={ Style.icons }>
-              <ShareBTN />
+              <ShareBTN tooltipPosition="left" />
               <FavoriteBTN recipe={ food } />
             </div>
           </div>
