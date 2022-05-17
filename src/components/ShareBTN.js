@@ -6,7 +6,7 @@ import { baseURL, tooltipPositions } from '../helpers';
 import shareIcon from '../images/shareIcon.svg';
 import Style from './css/ShareBTN.module.css';
 
-const magicNumber1000 = 100000;
+const magicNumber1000 = 1000;
 
 function ShareBTN({ recipeType, dataTestid, idCard, tooltipPosition }) {
   const { location: { pathname } } = useHistory();
