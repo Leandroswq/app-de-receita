@@ -11,6 +11,9 @@ export const getLocalStorage = (key) => {
   }
 };
 
+export const tooltipPositions = {
+  top: 'top', right: 'right', bottom: 'bottom', left: 'left' };
+
 export const filterValuesFromObjectToArray = (regex, obj) => {
   let keys = Object.keys(obj);
   keys = keys.filter((item) => regex.test(item))

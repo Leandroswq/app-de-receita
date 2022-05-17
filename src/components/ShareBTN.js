@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { Overlay, Tooltip } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
-import { baseURL } from '../helpers';
+import { baseURL, tooltipPositions } from '../helpers';
 import shareIcon from '../images/shareIcon.svg';
 import Style from './css/ShareBTN.module.css';
 
-const magicNumber1000 = 1000;
+const magicNumber1000 = 100000;
 
-function ShareBTN({ recipeType, dataTestid, idCard }) {
+function ShareBTN({ recipeType, dataTestid, idCard, tooltipPosition }) {
   const { location: { pathname } } = useHistory();
   const { id } = useParams();
   const basePage = pathname.split('/')[1];
@@ -39,7 +39,7 @@ function ShareBTN({ recipeType, dataTestid, idCard }) {
       <Overlay
         target={ target.current }
         show={ showMessage }
-        placement="right"
+        placement={ tooltipPosition }
       >
         {(props) => (
           <Tooltip id="overlay-example" { ...props }>
@@ -55,12 +55,14 @@ ShareBTN.propTypes = {
   recipeType: PropTypes.string,
   dataTestid: PropTypes.string,
   idCard: PropTypes.string,
+  tooltipPosition: PropTypes.string,
 };
 
 ShareBTN.defaultProps = {
   recipeType: null,
   dataTestid: null,
   idCard: '',
+  tooltipPosition: tooltipPositions.right,
 };
 
 export default ShareBTN;
