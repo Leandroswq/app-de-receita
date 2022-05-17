@@ -9,6 +9,8 @@ import Footer from '../components/Footer';
 import getDrinks from '../API/getDrinks';
 import { searchRecipesAc } from '../redux/actions/searchActions';
 import { drinksCategoriesAction } from '../redux/actions/categoriesActions';
+import Style from './css/FoodsAndDrinks.module.css';
+import Arrow from '../images/arrowRight.svg';
 
 const magicNumber5 = 5;
 const maxNumber = 12;
@@ -64,35 +66,41 @@ function Drinks() {
   }
 
   return (
-    <div>
+    <div className={ Style.container }>
       <Header hasSearch title="Drinks" />
-      <div>
-        <button
-          data-testid="All-category-filter"
-          type="button"
-          onClick={ () => handleCategorieBtnClick('All') }
+      <div className={ Style['categories-container'] }>
+        <div className={ Style.title }>
+          <h1> Categories </h1>
+          <button
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ () => handleCategorieBtnClick('All') }
+            className={ Style.allBtn }
+          >
+            All
+            <img src={ Arrow } alt="Arrow Right" />
+          </button>
 
-        >
-          All
+        </div>
+        <div className={ Style.categories }>
+          {
+            drinksCategories.slice(0, magicNumber5)
+              .map((categorie, index) => (
+                <button
+                  key={ categorie.strCategory }
+                  data-testid={ `${categorie.strCategory}-category-filter` }
+                  type="button"
+                  onClick={ () => handleCategorieBtnClick(categorie.strCategory,
+                    `categorie${index}`) }
 
-        </button>
-        {
-          drinksCategories.slice(0, magicNumber5)
-            .map((categorie, index) => (
-              <button
-                key={ categorie.strCategory }
-                data-testid={ `${categorie.strCategory}-category-filter` }
-                type="button"
-                onClick={ () => handleCategorieBtnClick(categorie.strCategory,
-                  `categorie${index}`) }
-
-              >
-                {categorie.strCategory}
-              </button>
-            ))
-        }
+                >
+                  {categorie.strCategory}
+                </button>
+              ))
+          }
+        </div>
       </div>
-      <div>
+      <div className={ Style.content }>
         {
           drinks && drinks.slice(0, maxNumber)
             .map(({ idDrink, strDrinkThumb, strDrink }, index) => (
