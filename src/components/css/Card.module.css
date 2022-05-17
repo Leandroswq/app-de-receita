@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 0.5rem;
   height: 190px;
+  max-width: calc(50vw - 50px);
   padding: 1rem;
   width: 150px;
 }
