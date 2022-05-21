@@ -30,6 +30,7 @@ function ShareBTN({ recipeType, dataTestid, idCard, tooltipPosition }) {
         data-testid={
           dataTestid || 'share-btn'
         }
+        className={ Style.button }
         onClick={ handleFavoritButton }
         ref={ target }
         src={ shareIcon }

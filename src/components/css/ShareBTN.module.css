@@ -7,3 +7,8 @@
   padding: 4px;
   position: relative;
 }
+
+.button {
+  border: 0;
+  padding: 2px;
+}
