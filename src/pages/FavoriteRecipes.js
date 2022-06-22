@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardDoneRecipes from '../components/CardDoneRecipes';
 import Header from '../components/Header';
 import { getLocalStorage, setLocalStorage } from '../helpers';
+import Style from './css/FavoriteRecipes.module.css';
 
 function FavoriteRecipes() {
   const [data, setData] = useState([]);
@@ -25,10 +26,9 @@ function FavoriteRecipes() {
     }
   };
   return (
-    <div>
+    <div className={ Style.container }>
       <Header title="Favorite Recipes" />
-      <p>Favorite Recipes </p>
-      <div>
+      <div className={ Style['container-buttons'] }>
         <button
           data-testid="filter-by-all-btn"
           type="button"
@@ -54,15 +54,17 @@ function FavoriteRecipes() {
           Drink
         </button>
       </div>
-      {
-        data.map((elem, i) => (
-          <CardDoneRecipes
-            setData={ setData }
-            key={ elem.id }
-            data={ elem }
-            index={ i }
-          />))
-      }
+      <div className={ Style.card }>
+        {
+          data.map((elem, i) => (
+            <CardDoneRecipes
+              setData={ setData }
+              key={ elem.id }
+              data={ elem }
+              index={ i }
+            />))
+        }
+      </div>
     </div>
   );
 }

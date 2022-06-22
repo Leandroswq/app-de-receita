@@ -1,0 +1,18 @@
+.container {
+  background-color: var(--cor-secundaria);
+}
+
+.container-buttons {
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.container-buttons button {
+  margin-right: 8px;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
