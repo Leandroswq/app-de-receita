@@ -17,7 +17,6 @@ function ExploreFood() {
   return (
     <div className={ Style.container }>
       <Header title="Explore Foods" />
-      <p>Explore Food</p>
       <Link
         to="/explore/foods/ingredients"
         type="button"
