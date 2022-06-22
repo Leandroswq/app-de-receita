@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Style from './css/Header.module.css';
+import FavoriteLink from './FavoriteLink';
 import SearchBar from './SearchBar';
 
 function Header({ hasSearch, title }) {
@@ -14,12 +15,15 @@ function Header({ hasSearch, title }) {
     <div className={ Style.container }>
       <div className={ Style.header }>
         <h3 data-testid="page-title">{ title }</h3>
-        <button
-          type="button"
-          onClick={ () => history.push('/profile') }
-        >
-          <img src={ profileIcon } data-testid="profile-top-btn" alt="profile" />
-        </button>
+        <div>
+          <FavoriteLink />
+          <button
+            type="button"
+            onClick={ () => history.push('/profile') }
+          >
+            <img src={ profileIcon } data-testid="profile-top-btn" alt="profile" />
+          </button>
+        </div>
       </div>
       {hasSearch && (
         <button
