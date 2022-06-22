@@ -16,7 +16,7 @@ function ExploreDrink() {
   return (
     <div className={ Style.container }>
       <Header title="Explore Drinks" />
-      <p>Explore Drink</p>
+
       <Link
         to="/explore/drinks/ingredients"
         type="button"
