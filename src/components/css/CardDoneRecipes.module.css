@@ -1,0 +1,5 @@
+.container {
+  color: var(--cor-texto);
+  margin-bottom: 32px;
+  max-width: 40%;
+}

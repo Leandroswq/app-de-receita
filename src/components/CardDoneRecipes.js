@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteBTN from './FavoriteBTN';
 import ShareBTN from './ShareBTN';
+import Style from './css/CardDoneRecipes.module.css';
 
 function CardDoneRecipes({ data, index, setData }) {
   const { name, image, category, doneDate, tags,
@@ -12,7 +13,7 @@ function CardDoneRecipes({ data, index, setData }) {
     auxType = 'foods';
   } else auxType = 'drinks';
   return (
-    <div>
+    <div className={ Style.container }>
       <Link to={ `/${auxType}/${id}` }>
         <img
           className="w-100"
