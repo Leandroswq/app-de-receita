@@ -1,0 +1,19 @@
+.container {
+  background-color: var(--cor-secundaria);
+  height: 100vh;
+}
+
+.container a, .container button {
+  background-color: var(--cor-secundaria-placeholder);
+  color: var(--cor-icon-unselect);
+  margin-left: 8px;
+  margin-top: 12px;
+  padding: 8px;
+  width: fit-content;
+}
+
+
+.container button {
+  border: none;
+
+}

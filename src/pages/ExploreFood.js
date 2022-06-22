@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Style from './css/ExploreFoodsAndDrinks.module.css';
 import getMeal from '../API/foodAPI';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -14,7 +15,7 @@ function ExploreFood() {
   }
 
   return (
-    <div>
+    <div className={ Style.container }>
       <Header title="Explore Foods" />
       <p>Explore Food</p>
       <Link

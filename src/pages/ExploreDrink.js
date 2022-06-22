@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import getCocktail from '../API/drinkAPI';
+import Style from './css/ExploreFoodsAndDrinks.module.css';
 
 function ExploreDrink() {
   const history = useHistory();
@@ -13,7 +14,7 @@ function ExploreDrink() {
     history.push(`/drinks/${idDrink}`);
   }
   return (
-    <div>
+    <div className={ Style.container }>
       <Header title="Explore Drinks" />
       <p>Explore Drink</p>
       <Link
