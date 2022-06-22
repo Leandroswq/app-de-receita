@@ -111,7 +111,6 @@ function Drinks() {
                   key={ idDrink }
                   index={ index }
                 />
-                /
 
               </Link>
             ))
