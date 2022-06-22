@@ -1,6 +1,10 @@
+/* stylelint-disable font-family-name-quotes */
 .container {
   align-items: center;
-  background-color: rgb(241, 229, 59);
+  background-color: var(--cor-secundaria);
+  background-image: url('../../images/bg-cloud.png');
+  background-repeat: no-repeat;
+  background-size: 200%;
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -9,6 +13,7 @@
 }
 
 .container form {
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
@@ -17,30 +22,44 @@
 
 .container .input, .button {
   background: transparent;
-  border: 1px solid rgb(13, 13, 13);
+  border: 1px solid var(--cor-principal);
   border-radius: 15px;
+  color: var(--cor-texto);
   font-size: 1.2rem;
   padding: 1rem;
-  width: 100%;
+  width: 280px;
+}
+
+.container h1 {
+  color: var(--cor-principal);
+  font-family: 'Raleway' , sans-serif;
+  font-weight: 200;
+}
+
+.container form img {
+  width: 150px;
+}
+
+:focus-visible {
+  outline: none;
 }
 
 ::placeholder {
-  color: rgb(89, 72, 20);
+  color: var(--cor-texto-secundaria);
   opacity: 1;
 }
 
 .container .button {
-  background-color: rgb(13, 13, 13);
-  color: rgb(235, 235, 235);
+  background-color: var(--cor-principal);
   cursor: pointer;
 }
 
 .container .button:disabled {
-  background-color: rgb(54, 54, 54);
+  background-color: var(--cor-principal-disabled);
   opacity: 0.8;
 }
 
 .container .button:disabled:hover {
-  background-color: rgb(54, 54, 54);
+  background-color: var(--cor-principal-disabled);
   opacity: 1;
 }

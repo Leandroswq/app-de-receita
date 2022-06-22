@@ -2,21 +2,12 @@
   background-color: white;
   border: 2px solid black;
   border-radius: 2px;
+  color: black;
   margin-left: 5px;
   padding: 4px;
   position: relative;
 }
 
-.tooltip:after {
-  background-color: white;
-  border: 2px solid;
-  border-color: transparent transparent black black;
-  content: '';
-  display: block;
-  height: 5px;
-  left: -5px;
-  position: absolute;
-  top: 10px;
-  transform: rotate(45deg);
-  width: 5px;
+.button {
+  padding: 2px;
 }

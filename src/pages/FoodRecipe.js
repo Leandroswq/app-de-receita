@@ -69,11 +69,13 @@ function FoodRecipe() {
             data-testid="recipe-photo"
             className={ Style['recipe-image'] }
           />
-          <h2 data-testid="recipe-title">{food.strMeal}</h2>
-
-          <ShareBTN />
-          <FavoriteBTN recipe={ food } />
-
+          <div className={ Style.titleAndIcons }>
+            <h2 data-testid="recipe-title">{food.strMeal}</h2>
+            <div className={ Style.icons }>
+              <ShareBTN tooltipPosition="left" />
+              <FavoriteBTN recipe={ food } />
+            </div>
+          </div>
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
           <div>
@@ -112,7 +114,7 @@ function FoodRecipe() {
             {
               recomendedDrinks.map((item, ind) => (
                 <Carousel.Item key={ item[0].strDrink }>
-                  <div className={ Style.Card }>
+                  <div className={ Style.card }>
                     <Card
                       title={ item[0].strDrink }
                       index={ ind * 2 }

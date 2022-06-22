@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Style from './css/Card.module.css';
 
-function Card({ title, image, index, type, style }) {
+function Card({ title, image, index, type }) {
   const dataTestIdCard = () => {
     switch (type) {
     case 'recipe':
@@ -27,17 +28,15 @@ function Card({ title, image, index, type, style }) {
   return (
     <div
       data-testid={ dataTestIdCard() }
-      className={ style ? style.card : undefined }
+      className={ Style.container }
     >
       <img
         src={ image }
         alt={ title }
         data-testid={ `${index}-card-img` }
-        className={ style ? style.card__image : undefined }
       />
       <h2
         data-testid={ dataTestIdTitle() }
-        className={ style ? style.card__title : undefined }
       >
         {title}
 
@@ -51,12 +50,10 @@ Card.propTypes = {
   image: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   type: PropTypes.string,
-  style: PropTypes.objectOf(PropTypes.any),
 };
 
 Card.defaultProps = {
   type: 'recipe',
-  style: {},
 };
 
 export default Card;

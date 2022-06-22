@@ -1,25 +1,39 @@
 .container {
-  width: 100vw;
+  align-items: left;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  width: 100%;
 }
 
 .recipe-image {
   width: 100%;
 }
 
-.card-container {
+.titleAndIcons {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 31px;
-  overflow-x: auto;
-  padding-left: 15px;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.card__image, .card {
-  width: 150px;
+.icons {
+  margin-left: 5px;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .fixed-btn {
   bottom: 0;
   position: fixed;
+  z-index: 1;
 }
 

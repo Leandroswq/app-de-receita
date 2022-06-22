@@ -1,0 +1,92 @@
+/* stylelint-disable selector-pseudo-element-colon-notation */
+.container {
+  width: 100%;
+}
+
+.searchInput {
+  background-color: var(--cor-placeholder-escura);
+  border: none;
+  border-radius: 15px;
+  color: var(--cor-texto-secundaria);
+  padding: 1rem;
+  width: 100%;
+}
+
+.filters {
+  align-items: center;
+  color: var(--cor-texto-secundaria);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.searchBtn {
+  background-color: var(--cor-principal);
+  border: none;
+  border-radius: 15px;
+  color: var(--cor-texto);
+  padding: 1rem;
+  width: 100%;
+}
+
+
+/* radio buttons inspiração: https://codepen.io/AbubakerSaeed/pen/MWaEqJP */
+.rad-label {
+  align-items: center;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  margin: 8px 0;
+  padding: 12px 14px;
+  transition: 0.3s;
+}
+
+.rad-label:hover, .rad-label:focus-within {
+  background: hsla(0, 0%, 80%, 0.14);
+}
+
+.rad-input {
+  height: 1px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  z-index: -1;
+}
+
+.rad-design {
+  background: linear-gradient(to right bottom, rgb(255, 114, 105), rgb(120, 54, 49));
+  border-radius: 100px;
+  height: 22px;
+  position: relative;
+  width: 22px;
+}
+
+.rad-design::before {
+  background: var(--cor-secundaria-placeholder);
+  border-radius: inherit;
+  content: '';
+  display: inline-block;
+  height: inherit;
+  transform: scale(1.1);
+  transition: 0.3s;
+  width: inherit;
+}
+
+.rad-input:checked + .rad-design::before {
+  transform: scale(0);
+}
+
+.rad-text {
+  color: var(--cor-texto-secundaria);
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.rad-input:checked ~ .rad-text {
+  color: hsl(0, 0%, 40%);
+}

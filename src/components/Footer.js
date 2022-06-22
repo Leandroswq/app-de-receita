@@ -1,43 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { MdFoodBank, MdLocalBar, MdExplore } from 'react-icons/md';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import styles from './css/Footer.module.css';
+import './css/activeNavLinkFooter.css';
 
 function Footer() {
   return (
-    <footer data-testid="footer" className={ styles.footer }>
-      <Link
+    <footer data-testid="footer" className={ styles.container }>
+      <NavLink
         to="/drinks"
         type="button"
+        activeClassName="activeNavLinkFooter"
       >
         <img
           data-testid="drinks-bottom-btn"
           src={ drinkIcon }
           alt="Drink Icon"
         />
-      </Link>
-      <Link
+        <MdLocalBar />
+      </NavLink>
+      <NavLink
         to="/explore"
         type="button"
+        activeClassName="activeNavLinkFooter"
       >
         <img
           data-testid="explore-bottom-btn"
           src={ exploreIcon }
           alt="Explore Icon"
         />
-      </Link>
-      <Link
+        <MdExplore />
+      </NavLink>
+      <NavLink
         to="/foods"
         type="button"
+        activeClassName="activeNavLinkFooter"
       >
         <img
           data-testid="food-bottom-btn"
           src={ mealIcon }
           alt="Meal Icon"
         />
-      </Link>
+        <MdFoodBank />
+      </NavLink>
     </footer>
   );
 }

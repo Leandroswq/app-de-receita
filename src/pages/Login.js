@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Style from './css/Login.module.css';
+import logo from '../images/logo.svg';
 import { setLocalStorage } from '../helpers';
 
 export default function Login() {
@@ -26,6 +27,8 @@ export default function Login() {
   return (
     <div className={ Style.container }>
       <form>
+        <img src={ logo } alt="logo" />
+        <h1>Code Chef</h1>
         <label htmlFor="email">
           <input
             data-testid="email-input"

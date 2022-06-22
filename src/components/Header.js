@@ -11,21 +11,23 @@ function Header({ hasSearch, title }) {
   const [showInput, setShowInput] = useState(false);
 
   return (
-    <div className={ Style.header }>
-      <button
-        type="button"
-        className={ Style.icon }
-        onClick={ () => history.push('/profile') }
-      >
-        <img src={ profileIcon } data-testid="profile-top-btn" alt="profile" />
-      </button>
-      <h3 data-testid="page-title">{ title }</h3>
+    <div className={ Style.container }>
+      <div className={ Style.header }>
+        <h3 data-testid="page-title">{ title }</h3>
+        <button
+          type="button"
+          onClick={ () => history.push('/profile') }
+        >
+          <img src={ profileIcon } data-testid="profile-top-btn" alt="profile" />
+        </button>
+      </div>
       {hasSearch && (
         <button
           type="button"
           className={ Style.icon }
           onClick={ () => setShowInput((prev) => !prev) }
         >
+          Find your dishes
           <img src={ searchIcon } data-testid="search-top-btn" alt="search" />
         </button>
       )}

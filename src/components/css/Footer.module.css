@@ -1,4 +1,29 @@
-.footer {
+.container {
+  align-items: center;
+  backdrop-filter: blur(9px);
+  background: rgba(37, 40, 48, 0.8);
+  border-radius: 40px 40px 0 0;
   bottom: 0;
+  display: flex;
+  height: 82.61px;
+  justify-content: center;
   position: fixed;
+  width: 360px;
+}
+
+.container a {
+  padding: 0.5rem;
+}
+
+.container a img {
+  display: hidden;
+  height: 0;
+  width: 0;
+}
+
+.container svg {
+  color: var(--cor-icon-unselect);
+  height: 30px;
+  transition: 0.6s;
+  width: 30px;
 }
