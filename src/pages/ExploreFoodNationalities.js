@@ -7,6 +7,7 @@ import Card from '../components/Card';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { searchRecipesAc } from '../redux/actions/searchActions';
+import Style from './css/ExploreFoodsNationality.module.css';
 
 function ExploreFoodNationalities() {
   const [options, setOptions] = useState(['All']);
@@ -36,7 +37,7 @@ function ExploreFoodNationalities() {
     dispatch(searchRecipesAc(data));
   }
   return (
-    <div>
+    <div className={ Style.container }>
       <Header hasSearch title="Explore Nationalities" />
       <form>
         <label htmlFor="explore">
@@ -59,7 +60,7 @@ function ExploreFoodNationalities() {
           </select>
         </label>
       </form>
-      <div>
+      <div className={ Style['container-card'] }>
         {
           meals && meals.slice(0, maxNumber)
             .map(({ idMeal, strMealThumb, strMeal }, index) => (
