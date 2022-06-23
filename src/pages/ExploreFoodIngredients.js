@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import getFoods from '../API/getFoods';
 import { searchFoodIngredients } from '../redux/actions/ingredientsActions';
 import { searchRecipesAc } from '../redux/actions/searchActions';
+import Style from './css/ExploreIngrents.module.css';
 
 function ExploreFoodIngredients() {
   const { foodIngredient } = useSelector((state) => state.ingredientsReducer);
@@ -32,9 +33,9 @@ function ExploreFoodIngredients() {
   }
 
   return (
-    <div>
+    <div className={ Style.container }>
       <Header title="Explore Ingredients" />
-      <div>
+      <div className={ Style['container-card'] }>
         {
           foodIngredient.slice(0, magicNumber12).map((item, index) => (
             <button

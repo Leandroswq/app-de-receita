@@ -1,0 +1,17 @@
+.container {
+  background-color: var(--cor-secundaria);
+  min-height: 100vh;
+}
+
+.container button {
+  background-color: var(--cor-secundaria);
+  border: none;
+  margin-bottom: 16px;
+}
+
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 8px 12px;
+}

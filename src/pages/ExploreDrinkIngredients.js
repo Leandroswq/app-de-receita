@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Style from './css/ExploreIngrents.module.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
@@ -33,9 +34,9 @@ function ExploreDrinkIngredients() {
   }
 
   return (
-    <div>
+    <div className={ Style.container }>
       <Header title="Explore Ingredients" />
-      <div>
+      <div className={ Style['container-card'] }>
         {
           drinkIngredient.slice(0, magicNumber12).map((item, index) => (
             <button
