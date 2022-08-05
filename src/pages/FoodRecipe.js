@@ -78,12 +78,13 @@ function FoodRecipe() {
           </div>
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
-          <div>
+          <div className={ Style.ingredients }>
             {
               createIngredientAndMeasureArray()
                 .map((item, ind) => (
                   <p
                     key={ item[0] }
+                    className={ Style.ingredients }
                     data-testid={ `${ind}-ingredient-name-and-measure` }
                   >
                     {`-${item[0]}-${item[1]}`}
@@ -136,7 +137,7 @@ function FoodRecipe() {
             <button
               data-testid="start-recipe-btn"
               type="button"
-              className={ Style['fixed-btn'] }
+              className={ `${Style['fixed-btn']} ${Style['start-recipe']}` }
               onClick={ handleBtnStartRecipe }
             >
               Start recipe
@@ -148,7 +149,7 @@ function FoodRecipe() {
                 <button
                   data-testid="start-recipe-btn"
                   type="button"
-                  className={ Style['fixed-btn'] }
+                  className={ `${Style['fixed-btn']} ${Style['continue-recipe']}` }
                   onClick={ handleBtnStartRecipe }
 
                 >

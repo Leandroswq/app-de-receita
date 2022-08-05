@@ -5,6 +5,7 @@ import getFoods from '../API/getFoods';
 import ShareBTN from '../components/ShareBTN';
 import FavoriteBTN from '../components/FavoriteBTN';
 import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
+import Style from './css/Recipe.module.css';
 
 function FoodRecipeProgress() {
   const { id } = useParams();
@@ -25,19 +26,22 @@ function FoodRecipeProgress() {
   };
 
   return (
-    <div>
+    <div className={ Style.container }>
       {food !== undefined && (
         <>
           <img
             src={ food.strMealThumb }
+            className={ Style['recipe-image'] }
             alt={ food.strMeal }
             data-testid="recipe-photo"
           />
-          <h2 data-testid="recipe-title">{food.strMeal}</h2>
-
-          <ShareBTN />
-          <FavoriteBTN recipe={ food } />
-
+          <div className={ Style.titleAndIcons }>
+            <h2 data-testid="recipe-title">{food.strMeal}</h2>
+            <div className={ Style.icons }>
+              <ShareBTN />
+              <FavoriteBTN recipe={ food } />
+            </div>
+          </div>
           <p data-testid="recipe-category">{food.strCategory}</p>
           <h3>Ingredients</h3>
           <ProgressIngredientsRecipe
@@ -62,6 +66,7 @@ function FoodRecipeProgress() {
           />
           <button
             data-testid="finish-recipe-btn"
+            className={ `${Style['fixed-btn']} ${Style['continue-recipe']}` }
             type="button"
             disabled={ finsishDisabled }
             onClick={ handleFinshiRecipe }

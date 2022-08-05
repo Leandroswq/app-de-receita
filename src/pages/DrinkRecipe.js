@@ -83,7 +83,7 @@ function DrinkRecipe() {
             {createIngredientAndMeasureArray().map((item, ind) => (
               <p
                 key={ item[0] }
-                className={ Style.ingredients }
+                className={ Style.ingredient }
                 data-testid={ `${ind}-ingredient-name-and-measure` }
               >
                 {`-${item[0]}-${item[1]}`}

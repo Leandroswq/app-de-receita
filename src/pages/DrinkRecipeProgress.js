@@ -5,6 +5,7 @@ import getDrinks from '../API/getDrinks';
 import FavoriteBTN from '../components/FavoriteBTN';
 import ProgressIngredientsRecipe from '../components/ProgressIngredientsRecipe';
 import ShareBTN from '../components/ShareBTN';
+import Style from './css/Recipe.module.css';
 
 function DrinkRecipeProgress() {
   const { id } = useParams();
@@ -25,18 +26,24 @@ function DrinkRecipeProgress() {
   };
 
   return (
-    <div>
+    <div className={ Style.container }>
       {drink !== undefined && (
         <>
           <img
             src={ drink.strDrinkThumb }
+            className={ Style['recipe-image'] }
             alt={ drink.strDrink }
             data-testid="recipe-photo"
           />
-          <h2 data-testid="recipe-title">{drink.strDrink}</h2>
+          <div className={ Style.titleAndIcons }>
 
-          <ShareBTN />
-          <FavoriteBTN recipe={ drink } />
+            <h2 data-testid="recipe-title">{drink.strDrink}</h2>
+            <div className={ Style.icons }>
+
+              <ShareBTN />
+              <FavoriteBTN recipe={ drink } />
+            </div>
+          </div>
 
           <p data-testid="recipe-category">{drink.strAlcoholic}</p>
           <h3>Ingredients</h3>
@@ -52,6 +59,7 @@ function DrinkRecipeProgress() {
           <div data-testid={ `${1}-recomendation-card` }>Receitas recomendadas</div>
           <button
             data-testid="finish-recipe-btn"
+            className={ `${Style['fixed-btn']} ${Style['continue-recipe']}` }
             type="button"
             disabled={ finsishDisabled }
             onClick={ handleFinshiRecipe }
