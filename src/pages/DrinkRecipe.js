@@ -81,12 +81,13 @@ function DrinkRecipe() {
           </div>
           <p data-testid="recipe-category">{drink.strAlcoholic}</p>
           <h3>Ingredients</h3>
-          <div>
+          <div className={ Style.ingredients }>
             {
               createIngredientAndMeasureArray()
                 .map((item, ind) => (
                   <p
                     key={ item[0] }
+                    className={ Style.ingredients }
                     data-testid={ `${ind}-ingredient-name-and-measure` }
                   >
                     {`-${item[0]}-${item[1]}`}
