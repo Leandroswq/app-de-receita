@@ -56,13 +56,12 @@
 @media ( min-width : 632px ) {
 
   .ingredients {
-    background-color: 'blue';
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
 
-  .ingredient p {
+  .ingredients p {
     text-align: left;
     width: 300px;
   }
