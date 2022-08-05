@@ -27,8 +27,7 @@ function DrinkRecipe() {
     }
     async function setFoods() {
       const response = await getFoods('', 'name');
-      const data = response.meals
-        .slice(0, magicNumber6);
+      const data = response.meals.slice(0, magicNumber6);
       const dataAux = [];
       data.forEach((value, ind) => {
         if (ind % 2 === 0) {
@@ -63,7 +62,6 @@ function DrinkRecipe() {
 
   return (
     <div className={ Style.container }>
-
       {drink !== undefined && (
         <>
           <img
@@ -82,18 +80,15 @@ function DrinkRecipe() {
           <p data-testid="recipe-category">{drink.strAlcoholic}</p>
           <h3>Ingredients</h3>
           <div className={ Style.ingredients }>
-            {
-              createIngredientAndMeasureArray()
-                .map((item, ind) => (
-                  <p
-                    key={ item[0] }
-                    className={ Style.ingredients }
-                    data-testid={ `${ind}-ingredient-name-and-measure` }
-                  >
-                    {`-${item[0]}-${item[1]}`}
-                  </p>
-                ))
-            }
+            {createIngredientAndMeasureArray().map((item, ind) => (
+              <p
+                key={ item[0] }
+                className={ Style.ingredients }
+                data-testid={ `${ind}-ingredient-name-and-measure` }
+              >
+                {`-${item[0]}-${item[1]}`}
+              </p>
+            ))}
           </div>
           <h3>Instructions</h3>
           <p data-testid="instructions">{drink.strInstructions}</p>
@@ -104,50 +99,46 @@ function DrinkRecipe() {
             onSelect={ handleSelect }
             variant="dark"
           >
-            {
-              recomendedFood.map((item, ind) => (
-                <Carousel.Item key={ item[0].idMeal }>
-                  <div className={ Style.card }>
-                    <Card
-                      title={ item[0].strMeal }
-                      index={ ind * 2 }
-                      type="recomendation"
-                      image={ item[0].strMealThumb }
-                    />
-                    <Card
-                      title={ item[1].strMeal }
-                      index={ (ind * 2) + 1 }
-                      type="recomendation"
-                      image={ item[1].strMealThumb }
-                    />
-                  </div>
-                </Carousel.Item>
-              ))
-            }
+            {recomendedFood.map((item, ind) => (
+              <Carousel.Item key={ item[0].idMeal }>
+                <div className={ Style.card }>
+                  <Card
+                    title={ item[0].strMeal }
+                    index={ ind * 2 }
+                    type="recomendation"
+                    image={ item[0].strMealThumb }
+                  />
+                  <Card
+                    title={ item[1].strMeal }
+                    index={ ind * 2 + 1 }
+                    type="recomendation"
+                    image={ item[1].strMealThumb }
+                  />
+                </div>
+              </Carousel.Item>
+            ))}
           </Carousel>
           {shownStartRecipeBtn === 'start' && (
             <button
               data-testid="start-recipe-btn"
               type="button"
-              className={ Style['fixed-btn'] }
+              className={ `${Style['fixed-btn']} ${Style['start-recipe']}` }
               onClick={ handleBtnStartRecipe }
             >
               Start recipe
+            </button>
+          )}
 
-            </button>)}
-
-          {shownStartRecipeBtn === 'inProgress'
-              && (
-                <button
-                  data-testid="start-recipe-btn"
-                  type="button"
-                  className={ Style['fixed-btn'] }
-                  onClick={ handleBtnStartRecipe }
-
-                >
-                  Continue Recipe
-
-                </button>)}
+          {shownStartRecipeBtn === 'inProgress' && (
+            <button
+              data-testid="start-recipe-btn"
+              type="button"
+              className={ `${Style['fixed-btn']} ${Style['continue-recipe']}` }
+              onClick={ handleBtnStartRecipe }
+            >
+              Continue Recipe
+            </button>
+          )}
         </>
       )}
     </div>

@@ -35,8 +35,21 @@
 
 .fixed-btn {
   bottom: 0;
+  font-size: 1.5rem;
+  height: 50px;
+  margin-left: calc((100% - 600px) / 2);
+  max-width: 600px;
   position: fixed;
+  width: 100%;
   z-index: 1;
+}
+
+.start-recipe {
+  background-color: var(--cor-green1);
+}
+
+.continue-recipe {
+  background-color: var(--cor-principal);
 
 }
 
