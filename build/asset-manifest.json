@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/app-de-receita/static/css/main.c3c17736.css",
+    "main.js": "/app-de-receita/static/js/main.c5a632f2.js",
+    "static/media/profileIcon.svg": "/app-de-receita/static/media/profileIcon.1cfd4918098afbd2a2d49c205beb40d9.svg",
+    "static/media/bg-cloud.png": "/app-de-receita/static/media/bg-cloud.f53cb746aec426a8ee9a.png",
+    "static/media/logo.svg": "/app-de-receita/static/media/logo.09a0ee7a0e7918cc1cd972baf90482ea.svg",
+    "static/media/exploreIcon.svg": "/app-de-receita/static/media/exploreIcon.076346236f69318885d7f53b65f0e4c7.svg",
+    "static/media/mealIcon.svg": "/app-de-receita/static/media/mealIcon.40029e7f1422ba5a1bf1c10fa4f59030.svg",
+    "static/media/shareIcon.svg": "/app-de-receita/static/media/shareIcon.87def1bd1dff9af9263f046c3b9bd31a.svg",
+    "static/media/whiteHeartIcon.svg": "/app-de-receita/static/media/whiteHeartIcon.2b822118952dc5140129c6349fcd0472.svg",
+    "static/media/blackHeartIcon.svg": "/app-de-receita/static/media/blackHeartIcon.083cb006913d197c95857ebfa2161db7.svg",
+    "static/media/drinkIcon.svg": "/app-de-receita/static/media/drinkIcon.efc0d3c156e5da73e44a826c8d67b142.svg",
+    "static/media/readHeartIcon.svg": "/app-de-receita/static/media/readHeartIcon.ceb6a66cf288e17a7c4b5a2a1335b962.svg",
+    "static/media/searchIcon.svg": "/app-de-receita/static/media/searchIcon.6557fa1e725970e3107db28d9245b13f.svg",
+    "index.html": "/app-de-receita/index.html",
+    "static/media/arrowRight.svg": "/app-de-receita/static/media/arrowRight.d0c4508d37609cba274ca28f9a91305a.svg",
+    "main.c3c17736.css.map": "/app-de-receita/static/css/main.c3c17736.css.map",
+    "main.c5a632f2.js.map": "/app-de-receita/static/js/main.c5a632f2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3c17736.css",
+    "static/js/main.c5a632f2.js"
+  ]
+}
