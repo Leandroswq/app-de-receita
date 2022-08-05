@@ -11,6 +11,8 @@
 }
 
 .recipe-image {
+  margin: auto;
+  max-width: 600px;
   width: 100%;
 }
 
@@ -35,5 +37,6 @@
   bottom: 0;
   position: fixed;
   z-index: 1;
+
 }
 
