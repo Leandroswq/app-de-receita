@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/app-de-receita/static/css/main.52b0f816.css",
-    "main.js": "/app-de-receita/static/js/main.c54c68a5.js",
+    "main.css": "/app-de-receita/static/css/main.c3c17736.css",
+    "main.js": "/app-de-receita/static/js/main.c5a632f2.js",
     "static/media/profileIcon.svg": "/app-de-receita/static/media/profileIcon.1cfd4918098afbd2a2d49c205beb40d9.svg",
     "static/media/bg-cloud.png": "/app-de-receita/static/media/bg-cloud.f53cb746aec426a8ee9a.png",
     "static/media/logo.svg": "/app-de-receita/static/media/logo.09a0ee7a0e7918cc1cd972baf90482ea.svg",
@@ -15,11 +15,11 @@
     "static/media/searchIcon.svg": "/app-de-receita/static/media/searchIcon.6557fa1e725970e3107db28d9245b13f.svg",
     "index.html": "/app-de-receita/index.html",
     "static/media/arrowRight.svg": "/app-de-receita/static/media/arrowRight.d0c4508d37609cba274ca28f9a91305a.svg",
-    "main.52b0f816.css.map": "/app-de-receita/static/css/main.52b0f816.css.map",
-    "main.c54c68a5.js.map": "/app-de-receita/static/js/main.c54c68a5.js.map"
+    "main.c3c17736.css.map": "/app-de-receita/static/css/main.c3c17736.css.map",
+    "main.c5a632f2.js.map": "/app-de-receita/static/js/main.c5a632f2.js.map"
   },
   "entrypoints": [
-    "static/css/main.52b0f816.css",
-    "static/js/main.c54c68a5.js"
+    "static/css/main.c3c17736.css",
+    "static/js/main.c5a632f2.js"
   ]
 }
