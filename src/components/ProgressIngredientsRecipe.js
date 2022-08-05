@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Style from './css/ProgressIngredientsRecipes.module.css';
 import { filterValuesFromObjectToArray, getLocalStorage, setLocalStorage }
 from '../helpers';
 
@@ -73,6 +74,7 @@ function ProgressIngredientsRecipe({ recipe, type, id, disableButton }) {
                   key={ `ingredient-${ind}` }
                   htmlFor={ `ingredient-${ind}` }
                   data-testid={ `${ind}-ingredient-step` }
+                  className={ Style.ingredient }
                 >
                   <input
                     type="checkbox"
