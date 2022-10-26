@@ -3,6 +3,7 @@
 Esse é um projeto React com o objetivo de criar um app de receitas. Nesse projeto foi implementado as opção de buscar
 , filtrar, favoritar e acompanhar o progressos de receitas.
 
+Obs: Para efetuar o login basta digitar um email em um formato valido e uma senha com mais de 6 digitos
 ## Objetivo
 - Exercitar o trabalho em equipe em um abiente de desenvolvimento
 - Testar o conhecimentos em React
